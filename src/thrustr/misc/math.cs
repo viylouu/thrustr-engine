@@ -29,14 +29,10 @@
     public static float cbe(float a) => a*a*a;
     /// <summary>calculates the distance between two points</summary>
     public static float dist(Vector2 a, Vector2 b) => sqrt(sqr(b.X-a.X)+sqr(b.Y-a.Y));
-    /// <summary>calculates the distance between two points</summary>
     public static float dist(Vector2 a, float x, float y) => sqrt(sqr(x - a.X) + sqr(y - a.Y));
-    /// <summary>calculates the distance between two points</summary>
     public static float dist(float u, float v, float x, float y) => sqrt(sqr(x - u) + sqr(y - v));
     /// <summary>calculates the squared distance between two points</summary>
     public static float sqrdist(Vector2 a, Vector2 b) => sqr(b.X - a.X) + sqr(b.Y - a.Y);
-    /// <summary>calculates the squared distance between two points</summary>
     public static float sqrdist(Vector2 a, float x, float y) => sqr(x - a.X) + sqr(y - a.Y);
-    /// <summary>calculates the squared distance between two points</summary>
     public static float sqrdist(float u, float v, float x, float y) => sqr(x - u) + sqr(y - v);
 }
