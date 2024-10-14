@@ -35,4 +35,8 @@
     public static float sqrdist(Vector2 a, Vector2 b) => sqr(b.X - a.X) + sqr(b.Y - a.Y);
     public static float sqrdist(Vector2 a, float x, float y) => sqr(x - a.X) + sqr(y - a.Y);
     public static float sqrdist(float u, float v, float x, float y) => sqr(x - u) + sqr(y - v);
+    ///<summary>returns the biggest number between 2 numbers</summary>
+    public static float max(float a, float b) => MathF.Max(a, b);
+    ///<summary>returns the smallest number between 2 numbers</summary>
+    public static float min(float a, float b) => MathF.Min(a, b);
 }
