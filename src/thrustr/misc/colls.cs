@@ -222,7 +222,7 @@ public class coll {
     public static bool linecirc(Vector2 l1, Vector2 l2, Circle c) => linecirc(l1.X,l1.Y,l2.X,l2.Y,c.Position.X,c.Position.Y,c.Radius);
 
     /// <summary>checks if a circle is touching a line and returns the collision point</summary>
-    public static (float x, float y, bool ret) linecircp(float lx1, float ly1, float lx2, float ly2, float x, float y, float r) {
+    public static (float x, float y, bool ret) linecircxy(float lx1, float ly1, float lx2, float ly2, float x, float y, float r) {
         float len = math.sqr(lx1-lx2)+math.sqr(ly1-ly2);
         float dot = (((x-lx1)*(lx2-lx1))+((y-ly1)*(ly2-ly1))) / len;
 
@@ -235,15 +235,119 @@ public class coll {
 
         return (0,0,false);
     }
-    public static (float x, float y, bool ret) linecircp(Vector2 l1, float lx2, float ly2, float x, float y, float r) => linecircp(l1.X,l1.Y,lx2,ly2,x,y,r);
-    public static (float x, float y, bool ret) linecircp(float lx1, float ly1, Vector2 l2, float x, float y, float r) => linecircp(lx1,ly1,l2.X,l2.Y,x,y,r);
-    public static (float x, float y, bool ret) linecircp(float lx1, float ly1, float lx2, float ly2, Vector2 p, float r) => linecircp(lx1,ly1,lx2,ly2,p.X,p.Y,r);
-    public static (float x, float y, bool ret) linecircp(Vector2 l1, Vector2 l2, float x, float y, float r) => linecircp(l1.X,l1.Y,l2.X,l2.Y,x,y,r);
-    public static (float x, float y, bool ret) linecircp(Vector2 l1, float lx2, float ly2, Vector2 p, float r) => linecircp(l1.X,l1.Y,lx2,ly2,p.X,p.Y,r);
-    public static (float x, float y, bool ret) linecircp(float lx1, float ly1, Vector2 l2, Vector2 p, float r) => linecircp(lx1,ly1,l2.X,l2.Y,p.X,p.Y,r);
-    public static (float x, float y, bool ret) linecircp(Vector2 l1, Vector2 l2, Vector2 p, float r) => linecircp(l1.X,l1.Y,l2.X,l2.Y,p.X,p.Y,r);
-    public static (float x, float y, bool ret) linecircp(Vector2 l1, float lx2, float ly2, Circle c) => linecircp(l1.X,l1.Y,lx2,ly2,c.Position.X,c.Position.Y,c.Radius);
-    public static (float x, float y, bool ret) linecircp(float lx1, float ly1, Vector2 l2, Circle c) => linecircp(lx1,ly1,l2.X,l2.Y,c.Position.X,c.Position.Y,c.Radius);
-    public static (float x, float y, bool ret) linecircp(float lx1, float ly1, float lx2, float ly2, Circle c) => linecircp(lx1,ly1,lx2,ly2,c.Position.X,c.Position.Y,c.Radius);
-    public static (float x, float y, bool ret) linecircp(Vector2 l1, Vector2 l2, Circle c) => linecircp(l1.X,l1.Y,l2.X,l2.Y,c.Position.X,c.Position.Y,c.Radius);
+    public static (float x, float y, bool ret) linecircxy(Vector2 l1, float lx2, float ly2, float x, float y, float r) => linecircxy(l1.X,l1.Y,lx2,ly2,x,y,r);
+    public static (float x, float y, bool ret) linecircxy(float lx1, float ly1, Vector2 l2, float x, float y, float r) => linecircxy(lx1,ly1,l2.X,l2.Y,x,y,r);
+    public static (float x, float y, bool ret) linecircxy(float lx1, float ly1, float lx2, float ly2, Vector2 p, float r) => linecircxy(lx1,ly1,lx2,ly2,p.X,p.Y,r);
+    public static (float x, float y, bool ret) linecircxy(Vector2 l1, Vector2 l2, float x, float y, float r) => linecircxy(l1.X,l1.Y,l2.X,l2.Y,x,y,r);
+    public static (float x, float y, bool ret) linecircxy(Vector2 l1, float lx2, float ly2, Vector2 p, float r) => linecircxy(l1.X,l1.Y,lx2,ly2,p.X,p.Y,r);
+    public static (float x, float y, bool ret) linecircxy(float lx1, float ly1, Vector2 l2, Vector2 p, float r) => linecircxy(lx1,ly1,l2.X,l2.Y,p.X,p.Y,r);
+    public static (float x, float y, bool ret) linecircxy(Vector2 l1, Vector2 l2, Vector2 p, float r) => linecircxy(l1.X,l1.Y,l2.X,l2.Y,p.X,p.Y,r);
+    public static (float x, float y, bool ret) linecircxy(Vector2 l1, float lx2, float ly2, Circle c) => linecircxy(l1.X,l1.Y,lx2,ly2,c.Position.X,c.Position.Y,c.Radius);
+    public static (float x, float y, bool ret) linecircxy(float lx1, float ly1, Vector2 l2, Circle c) => linecircxy(lx1,ly1,l2.X,l2.Y,c.Position.X,c.Position.Y,c.Radius);
+    public static (float x, float y, bool ret) linecircxy(float lx1, float ly1, float lx2, float ly2, Circle c) => linecircxy(lx1,ly1,lx2,ly2,c.Position.X,c.Position.Y,c.Radius);
+    public static (float x, float y, bool ret) linecircxy(Vector2 l1, Vector2 l2, Circle c) => linecircxy(l1.X,l1.Y,l2.X,l2.Y,c.Position.X,c.Position.Y,c.Radius);
+
+    /// <summary>checks if a circle is touching a line and returns the collision point</summary>
+    public static (Vector2 p, bool ret) linecircp(float lx1, float ly1, float lx2, float ly2, float x, float y, float r) {
+        float len = math.sqr(lx1-lx2)+math.sqr(ly1-ly2);
+        float dot = (((x-lx1)*(lx2-lx1))+((y-ly1)*(ly2-ly1))) / len;
+
+        float cx = lx1 + dot * (lx2-lx1);
+        float cy = ly1 + dot * (ly2-ly1);
+
+        if(!linepoi(lx1,ly1,lx2,ly2,cx,cy)) return (Vector2.Zero,false);
+
+        if(math.sqrdist(cx,cy,x,y) <= r*r) return (new Vector2(cx,cy),true);
+
+        return (Vector2.Zero,false);
+    }
+    public static (Vector2 p, bool ret) linecircp(Vector2 l1, float lx2, float ly2, float x, float y, float r) => linecircp(l1.X,l1.Y,lx2,ly2,x,y,r);
+    public static (Vector2 p, bool ret) linecircp(float lx1, float ly1, Vector2 l2, float x, float y, float r) => linecircp(lx1,ly1,l2.X,l2.Y,x,y,r);
+    public static (Vector2 p, bool ret) linecircp(float lx1, float ly1, float lx2, float ly2, Vector2 p, float r) => linecircp(lx1,ly1,lx2,ly2,p.X,p.Y,r);
+    public static (Vector2 p, bool ret) linecircp(Vector2 l1, Vector2 l2, float x, float y, float r) => linecircp(l1.X,l1.Y,l2.X,l2.Y,x,y,r);
+    public static (Vector2 p, bool ret) linecircp(Vector2 l1, float lx2, float ly2, Vector2 p, float r) => linecircp(l1.X,l1.Y,lx2,ly2,p.X,p.Y,r);
+    public static (Vector2 p, bool ret) linecircp(float lx1, float ly1, Vector2 l2, Vector2 p, float r) => linecircp(lx1,ly1,l2.X,l2.Y,p.X,p.Y,r);
+    public static (Vector2 p, bool ret) linecircp(Vector2 l1, Vector2 l2, Vector2 p, float r) => linecircp(l1.X,l1.Y,l2.X,l2.Y,p.X,p.Y,r);
+    public static (Vector2 p, bool ret) linecircp(Vector2 l1, float lx2, float ly2, Circle c) => linecircp(l1.X,l1.Y,lx2,ly2,c.Position.X,c.Position.Y,c.Radius);
+    public static (Vector2 p, bool ret) linecircp(float lx1, float ly1, Vector2 l2, Circle c) => linecircp(lx1,ly1,l2.X,l2.Y,c.Position.X,c.Position.Y,c.Radius);
+    public static (Vector2 p, bool ret) linecircp(float lx1, float ly1, float lx2, float ly2, Circle c) => linecircp(lx1,ly1,lx2,ly2,c.Position.X,c.Position.Y,c.Radius);
+    public static (Vector2 p, bool ret) linecircp(Vector2 l1, Vector2 l2, Circle c) => linecircp(l1.X,l1.Y,l2.X,l2.Y,c.Position.X,c.Position.Y,c.Radius);
+
+    /// <summary>checks if a line is intersecting with another line</summary>
+    public static bool lineline(float x1, float y1, float x2, float y2, float x3, float y3, float x4, float y4) {
+        float a = ((x4-x3)*(y1-y3) - (y4-y3)*(x1-x3)) / ((y4-y3)*(x2-x1) - (x4-x3)*(y2-y1));
+        float b = ((x2-x1)*(y1-y3) - (y2-y1)*(x1-x3)) / ((y4-y3)*(x2-x1) - (x4-x3)*(y2-y1));
+
+        if(a >= 0 && a <= 1 && b >= 0 && b <= 1)
+            return true;
+
+        return false;
+    }
+    public static bool lineline(Vector2 p1, float x2, float y2, float x3, float y3, float x4, float y4) => lineline(p1.X,p1.Y,x2,y2,x3,y3,x4,y4);
+    public static bool lineline(float x1, float y1, Vector2 p2, float x3, float y3, float x4, float y4) => lineline(x1,y1,p2.X,p2.Y,x3,y3,x4,y4);
+    public static bool lineline(float x1, float y1, float x2, float y2, Vector2 p3, float x4, float y4) => lineline(x1,y1,x2,y2,p3.X,p3.Y,x4,y4);
+    public static bool lineline(float x1, float y1, float x2, float y2, float x3, float y3, Vector2 p4) => lineline(x1,y1,x2,y2,x3,y3,p4.X,p4.Y);
+    public static bool lineline(Vector2 p1, Vector2 p2, float x3, float y3, float x4, float y4) => lineline(p1.X,p1.Y,p2.X,p2.Y,x3,y3,x4,y4);
+    public static bool lineline(Vector2 p1, float x2, float y2, Vector2 p3, float x4, float y4) => lineline(p1.X,p1.Y,x2,y2,p3.X,p3.Y,x4,y4);
+    public static bool lineline(Vector2 p1, float x2, float y2, float x3, float y3, Vector2 p4) => lineline(p1.X,p1.Y,x2,y2,x3,y3,p4.X,p4.Y);
+    public static bool lineline(float x1, float y1, Vector2 p2, Vector2 p3, float x4, float y4) => lineline(x1,y1,p2.X,p2.Y,p3.X,p3.Y,x4,y4);
+    public static bool lineline(float x1, float y1, Vector2 p2, float x3, float y3, Vector2 p4) => lineline(x1,y1,p2.X,p2.Y,x3,y3,p4.X,p4.Y);
+    public static bool lineline(float x1, float y1, float x2, float y2, Vector2 p3, Vector2 p4) => lineline(x1,y1,x2,y2,p3.X,p3.Y,p4.X,p4.Y);
+    public static bool lineline(Vector2 p1, Vector2 p2, Vector2 p3, float x4, float y4) => lineline(p1.X,p1.Y,p2.X,p2.Y,p3.X,p3.Y,x4,y4);
+    public static bool lineline(Vector2 p1, Vector2 p2, float x3, float y3, Vector2 p4) => lineline(p1.X,p1.Y,p2.X,p2.Y,x3,y3,p4.X,p4.Y);
+    public static bool lineline(Vector2 p1, float x2, float y2, Vector2 p3, Vector2 p4) => lineline(p1.X,p1.Y,x2,y2,p3.X,p3.Y,p4.X,p4.Y);
+    public static bool lineline(float x1, float y1, Vector2 p2, Vector2 p3, Vector2 p4) => lineline(x1,y1,p2.X,p2.Y,p3.X,p3.Y,p4.X,p4.Y);
+    public static bool lineline(Vector2 p1, Vector2 p2, Vector2 p3, Vector2 p4) => lineline(p1.X,p1.Y,p2.X,p2.Y,p3.X,p3.Y,p4.X,p4.Y);
+
+    /// <summary>checks if a line is intersecting with another line and returns the intersection pos</summary>
+    public static (float x, float y, bool ret) linelinexy(float x1, float y1, float x2, float y2, float x3, float y3, float x4, float y4) {
+        float a = ((x4-x3)*(y1-y3) - (y4-y3)*(x1-x3)) / ((y4-y3)*(x2-x1) - (x4-x3)*(y2-y1));
+        float b = ((x2-x1)*(y1-y3) - (y2-y1)*(x1-x3)) / ((y4-y3)*(x2-x1) - (x4-x3)*(y2-y1));
+
+        if(a >= 0 && a <= 1 && b >= 0 && b <= 1)
+            return (x1 + (a * (x2-x1)),y1 + (b * (y2-y1)),true);
+
+        return (0,0,false);
+    }
+    public static (float x, float y, bool ret) linelinexy(Vector2 p1, float x2, float y2, float x3, float y3, float x4, float y4) => linelinexy(p1.X,p1.Y,x2,y2,x3,y3,x4,y4);
+    public static (float x, float y, bool ret) linelinexy(float x1, float y1, Vector2 p2, float x3, float y3, float x4, float y4) => linelinexy(x1,y1,p2.X,p2.Y,x3,y3,x4,y4);
+    public static (float x, float y, bool ret) linelinexy(float x1, float y1, float x2, float y2, Vector2 p3, float x4, float y4) => linelinexy(x1,y1,x2,y2,p3.X,p3.Y,x4,y4);
+    public static (float x, float y, bool ret) linelinexy(float x1, float y1, float x2, float y2, float x3, float y3, Vector2 p4) => linelinexy(x1,y1,x2,y2,x3,y3,p4.X,p4.Y);
+    public static (float x, float y, bool ret) linelinexy(Vector2 p1, Vector2 p2, float x3, float y3, float x4, float y4) => linelinexy(p1.X,p1.Y,p2.X,p2.Y,x3,y3,x4,y4);
+    public static (float x, float y, bool ret) linelinexy(Vector2 p1, float x2, float y2, Vector2 p3, float x4, float y4) => linelinexy(p1.X,p1.Y,x2,y2,p3.X,p3.Y,x4,y4);
+    public static (float x, float y, bool ret) linelinexy(Vector2 p1, float x2, float y2, float x3, float y3, Vector2 p4) => linelinexy(p1.X,p1.Y,x2,y2,x3,y3,p4.X,p4.Y);
+    public static (float x, float y, bool ret) linelinexy(float x1, float y1, Vector2 p2, Vector2 p3, float x4, float y4) => linelinexy(x1,y1,p2.X,p2.Y,p3.X,p3.Y,x4,y4);
+    public static (float x, float y, bool ret) linelinexy(float x1, float y1, Vector2 p2, float x3, float y3, Vector2 p4) => linelinexy(x1,y1,p2.X,p2.Y,x3,y3,p4.X,p4.Y);
+    public static (float x, float y, bool ret) linelinexy(float x1, float y1, float x2, float y2, Vector2 p3, Vector2 p4) => linelinexy(x1,y1,x2,y2,p3.X,p3.Y,p4.X,p4.Y);
+    public static (float x, float y, bool ret) linelinexy(Vector2 p1, Vector2 p2, Vector2 p3, float x4, float y4) => linelinexy(p1.X,p1.Y,p2.X,p2.Y,p3.X,p3.Y,x4,y4);
+    public static (float x, float y, bool ret) linelinexy(Vector2 p1, Vector2 p2, float x3, float y3, Vector2 p4) => linelinexy(p1.X,p1.Y,p2.X,p2.Y,x3,y3,p4.X,p4.Y);
+    public static (float x, float y, bool ret) linelinexy(Vector2 p1, float x2, float y2, Vector2 p3, Vector2 p4) => linelinexy(p1.X,p1.Y,x2,y2,p3.X,p3.Y,p4.X,p4.Y);
+    public static (float x, float y, bool ret) linelinexy(float x1, float y1, Vector2 p2, Vector2 p3, Vector2 p4) => linelinexy(x1,y1,p2.X,p2.Y,p3.X,p3.Y,p4.X,p4.Y);
+    public static (float x, float y, bool ret) linelinexy(Vector2 p1, Vector2 p2, Vector2 p3, Vector2 p4) => linelinexy(p1.X,p1.Y,p2.X,p2.Y,p3.X,p3.Y,p4.X,p4.Y);
+
+    /// <summary>checks if a line is intersecting with another line and returns the intersection pos</summary>
+    public static (Vector2 p, bool ret) linelinep(float x1, float y1, float x2, float y2, float x3, float y3, float x4, float y4) {
+        float a = ((x4-x3)*(y1-y3) - (y4-y3)*(x1-x3)) / ((y4-y3)*(x2-x1) - (x4-x3)*(y2-y1));
+        float b = ((x2-x1)*(y1-y3) - (y2-y1)*(x1-x3)) / ((y4-y3)*(x2-x1) - (x4-x3)*(y2-y1));
+
+        if(a >= 0 && a <= 1 && b >= 0 && b <= 1)
+            return (new Vector2(x1 + (a * (x2-x1)),y1 + (b * (y2-y1))),true);
+
+        return (Vector2.Zero,false);
+    }
+    public static (Vector2 p, bool ret) linelinep(Vector2 p1, float x2, float y2, float x3, float y3, float x4, float y4) => linelinep(p1.X,p1.Y,x2,y2,x3,y3,x4,y4);
+    public static (Vector2 p, bool ret) linelinep(float x1, float y1, Vector2 p2, float x3, float y3, float x4, float y4) => linelinep(x1,y1,p2.X,p2.Y,x3,y3,x4,y4);
+    public static (Vector2 p, bool ret) linelinep(float x1, float y1, float x2, float y2, Vector2 p3, float x4, float y4) => linelinep(x1,y1,x2,y2,p3.X,p3.Y,x4,y4);
+    public static (Vector2 p, bool ret) linelinep(float x1, float y1, float x2, float y2, float x3, float y3, Vector2 p4) => linelinep(x1,y1,x2,y2,x3,y3,p4.X,p4.Y);
+    public static (Vector2 p, bool ret) linelinep(Vector2 p1, Vector2 p2, float x3, float y3, float x4, float y4) => linelinep(p1.X,p1.Y,p2.X,p2.Y,x3,y3,x4,y4);
+    public static (Vector2 p, bool ret) linelinep(Vector2 p1, float x2, float y2, Vector2 p3, float x4, float y4) => linelinep(p1.X,p1.Y,x2,y2,p3.X,p3.Y,x4,y4);
+    public static (Vector2 p, bool ret) linelinep(Vector2 p1, float x2, float y2, float x3, float y3, Vector2 p4) => linelinep(p1.X,p1.Y,x2,y2,x3,y3,p4.X,p4.Y);
+    public static (Vector2 p, bool ret) linelinep(float x1, float y1, Vector2 p2, Vector2 p3, float x4, float y4) => linelinep(x1,y1,p2.X,p2.Y,p3.X,p3.Y,x4,y4);
+    public static (Vector2 p, bool ret) linelinep(float x1, float y1, Vector2 p2, float x3, float y3, Vector2 p4) => linelinep(x1,y1,p2.X,p2.Y,x3,y3,p4.X,p4.Y);
+    public static (Vector2 p, bool ret) linelinep(float x1, float y1, float x2, float y2, Vector2 p3, Vector2 p4) => linelinep(x1,y1,x2,y2,p3.X,p3.Y,p4.X,p4.Y);
+    public static (Vector2 p, bool ret) linelinep(Vector2 p1, Vector2 p2, Vector2 p3, float x4, float y4) => linelinep(p1.X,p1.Y,p2.X,p2.Y,p3.X,p3.Y,x4,y4);
+    public static (Vector2 p, bool ret) linelinep(Vector2 p1, Vector2 p2, float x3, float y3, Vector2 p4) => linelinep(p1.X,p1.Y,p2.X,p2.Y,x3,y3,p4.X,p4.Y);
+    public static (Vector2 p, bool ret) linelinep(Vector2 p1, float x2, float y2, Vector2 p3, Vector2 p4) => linelinep(p1.X,p1.Y,x2,y2,p3.X,p3.Y,p4.X,p4.Y);
+    public static (Vector2 p, bool ret) linelinep(float x1, float y1, Vector2 p2, Vector2 p3, Vector2 p4) => linelinep(x1,y1,p2.X,p2.Y,p3.X,p3.Y,p4.X,p4.Y);
+    public static (Vector2 p, bool ret) linelinep(Vector2 p1, Vector2 p2, Vector2 p3, Vector2 p4) => linelinep(p1.X,p1.Y,p2.X,p2.Y,p3.X,p3.Y,p4.X,p4.Y);
 }
