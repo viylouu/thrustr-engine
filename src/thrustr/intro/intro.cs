@@ -60,6 +60,13 @@
                     Window.Height/2 + 49/2f + dfont.charh/2, 
                     ColorF.Lerp(ColorF.Black,ColorF.White,lerp)
                 );
+                fontie.rendertext(
+                    c, dfont,
+                    "v 0.1",
+                    Window.Width/2 - fontie.predicttextwidth(dfont, "v 0.1")/2,
+                    math.round(Window.Height/2 + 49/2f) + dfont.charh+4,
+                    ColorF.Lerp(ColorF.Black, ColorF.White, lerp)
+                );
                 break;
             case 2:
                 c.DrawTexture(
