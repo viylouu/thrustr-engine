@@ -305,7 +305,7 @@ public class coll {
         float b = ((x2-x1)*(y1-y3) - (y2-y1)*(x1-x3)) / ((y4-y3)*(x2-x1) - (x4-x3)*(y2-y1));
 
         if(a >= 0 && a <= 1 && b >= 0 && b <= 1)
-            return (x1 + (a * (x2-x1)),y1 + (b * (y2-y1)),true);
+            return (x1 + (a * (x2-x1)),y1 + (a * (y2-y1)),true);
 
         return (0,0,false);
     }
@@ -331,7 +331,7 @@ public class coll {
         float b = ((x2-x1)*(y1-y3) - (y2-y1)*(x1-x3)) / ((y4-y3)*(x2-x1) - (x4-x3)*(y2-y1));
 
         if(a >= 0 && a <= 1 && b >= 0 && b <= 1)
-            return (new Vector2(x1 + (a * (x2-x1)),y1 + (b * (y2-y1))),true);
+            return (new Vector2(x1 + (a * (x2-x1)),y1 + (a * (y2-y1))),true);
 
         return (Vector2.Zero,false);
     }
