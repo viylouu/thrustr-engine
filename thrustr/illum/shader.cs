@@ -4,7 +4,7 @@
 
     public override ColorF GetPixelColor(Vector2 pos) {
         ColorF col = ColorF.Black;
-        Vector3 _col = MakeVector3(0,0,0);
+        Vector3 _col = new Vector3(0,0,0);
 
         for(int i = 0; i < l.Length; i++) {
             bool inshadow = false;
@@ -34,7 +34,7 @@
                     }
 
                 if(!inshadow)
-                    _col += MakeVector3(r,g,b);
+                    _col += new Vector3(r,g,b);
             }
         }
         

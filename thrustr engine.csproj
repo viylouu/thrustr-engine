@@ -8,9 +8,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="SimulationFramework" Version="0.3.0-alpha.7" />
-    <PackageReference Include="SimulationFramework.Desktop" Version="0.3.0-alpha.7" />
-    <PackageReference Include="SimulationFramework.OpenGL" Version="0.3.0-alpha.7" />
+    <PackageReference Include="SimulationFramework" Version="0.3.0-alpha.8" />
+    <PackageReference Include="SimulationFramework.Desktop" Version="0.3.0-alpha.8" />
+    <PackageReference Include="SimulationFramework.OpenGL" Version="0.3.0-alpha.8" />
   </ItemGroup>
 
   <ItemGroup>
@@ -42,7 +42,6 @@
 
   <ItemGroup>
     <Folder Include="assets\fonts\" />
-    <Folder Include="src\thrustr\fontie\" />
   </ItemGroup>
 
 </Project>
