@@ -7,6 +7,9 @@
     public const float _n1 = 7.5625f;
     public const float _d1 = 2.75f;
 
+    public static float dyn(float x, float t, float k) => (t-x)/(k/(Time.DeltaTime*60));
+    public static float dynang(float x, float t, float k) => ((math.abs(t+math.tau-x)<math.abs(t-x)?t+math.tau:t)-x)/(k/(Time.DeltaTime*60))%math.pi;
+
     public static float isine(float x) => 1-math.cos(math.clamp(x,0,1)*math.pi/2f);
     public static float osine(float x) => math.sin(math.clamp(x,0,1)*math.pi/2f);
     public static float iosine(float x) => -(math.cos(math.pi*math.clamp(x,0,1))-1)/2f;
@@ -41,8 +44,7 @@
     
     public static float iback(float x) => _c3*math.cbe(math.clamp(x,0,1))-_c1*math.sqr(math.clamp(x,0,1));
     public static float oback(float x) => 1+_c3*math.cbe(math.clamp(x,0,1)-1)+_c1*math.sqr(math.clamp(x,0,1)-1);
-    public static float ioback(float x) => math.clamp(x,0,1)<.5f?(math.sqr(2*math.clamp(x,0,1))*((_c2+1)*2*math.clamp(x,0,1)-_c2))/2f:(math.sqr(2*math.clamp(x,0,1)-2)*((_c2+1)*(math.clamp(x,0,1)*2-2)+_c2)+2)/2f;
-
+    public static float ioback(float x) => math.clamp(x,0,1)<.5f?(math.sqr(2*math.clamp(x,0,1))*((_c2+1)*2*math.clamp(x,0,1)-_c2))/2f:(math.sqr(2*math.clamp(x,0,1)-2)*((_c2+1)*(math.clamp(x,0,1)*2-2)+_c2)+2);
     public static float ielast(float x) => math.clamp(x,0,1)==0?0:math.clamp(x,0,1)==1?1:-math.pow(2,10*math.clamp(x,0,1)-10)*math.sin((math.clamp(x,0,1)*10-10.75f)*_c4);
     public static float oelast(float x) => math.clamp(x,0,1)==0?0:math.clamp(x,0,1)==1?1:math.pow(2,-10*math.clamp(x,0,1))*math.sin((math.clamp(x,0,1)*10-.75f)*_c4)+1;
     public static float ioelast(float x) => math.clamp(x,0,1)==0?0:math.clamp(x,0,1)==1?1:math.clamp(x,0,1)<.5f?-(math.pow(2,20*math.clamp(x,0,1)-10)*math.sin((20*math.clamp(x,0,1)-11.125f)*_c5))/2f:(math.pow(2,-20*math.clamp(x,0,1)+10)*math.sin((20*math.clamp(x,0,1)-11.125f)*_c5))/2f+1;
