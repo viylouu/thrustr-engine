@@ -9,6 +9,7 @@
         font.charh = _charh;
         font.chars = _chars;
         font.data = new chardata[_chars.Length];
+        font.fcase = caseness.both;
 
         for(int i = 0; i < _chars.Length; i++) {
             font.data[i] = new chardata();
@@ -49,6 +50,11 @@
     public static void rendertext(ICanvas c, font f, string text, float px, float py, Color col) => rendertext(c,f,text,px,py,col.ToColorF());
 
     public static void rendertext(ICanvas c, font f, string text, float px, float py, ColorF col) {
+        if(f.fcase == caseness.lower)
+            text = text.ToLower();
+        else if(f.fcase == caseness.upper)
+            text = text.ToUpper();
+
         int x = 0;
         for (int i = 0; i < text.Length; i++) {
             if (text[i] == ' ')

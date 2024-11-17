@@ -3,4 +3,12 @@
     public string chars;
     public int charw, charh;
     public chardata[] data;
+
+    public caseness fcase;
+}
+
+public enum caseness { 
+    lower,
+    both,
+    upper
 }

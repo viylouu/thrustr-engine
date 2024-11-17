@@ -37,8 +37,8 @@
                 fontie.rendertext(
                     c, dfont,
                     "a game by viylouu and lucas-code", 
-                    Window.Width/2 - fontie.predicttextwidth(dfont, "a game by viylouu and lucas-code") /2, 
-                    Window.Height/2 - dfont.charh/2, 
+                    math.round(Window.Width/2 - fontie.predicttextwidth(dfont, "a game by viylouu and lucas-code") /2), 
+                    math.floor(Window.Height/2 - dfont.charh/2), 
                     ColorF.Lerp(ColorF.Black,ColorF.White,lerp)
                 );
                 break;
@@ -56,15 +56,15 @@
                 fontie.rendertext(
                     c, dfont,
                     "made with thrustr engine", 
-                    Window.Width/2 - fontie.predicttextwidth(dfont, "made with thrustr engine") /2,
-                    Window.Height/2 + 49/2f + dfont.charh/2, 
+                    math.round(Window.Width/2 - fontie.predicttextwidth(dfont, "made with thrustr engine") /2),
+                    math.floor(Window.Height/2 + 49/2f + dfont.charh/2),
                     ColorF.Lerp(ColorF.Black,ColorF.White,lerp)
                 );
                 fontie.rendertext(
                     c, dfont,
                     "v 0.1.1",
-                    Window.Width/2 - fontie.predicttextwidth(dfont, "v 0.1.1")/2,
-                    math.round(Window.Height/2 + 49/2f) + dfont.charh+4,
+                    math.round(Window.Width/2 - fontie.predicttextwidth(dfont, "v 0.1.2")/2),
+                    math.floor(Window.Height/2 + 49/2f + dfont.charh+4),
                     ColorF.Lerp(ColorF.Black, ColorF.White, lerp)
                 );
                 break;
@@ -82,8 +82,8 @@
                 fontie.rendertext(
                     c, dfont,
                     "powered by simulation framework", 
-                    Window.Width/2 - fontie.predicttextwidth(dfont, "powered by simulation framework") /2,
-                    Window.Height/2 + 24 + dfont.charh/2, 
+                    math.round(Window.Width/2 - fontie.predicttextwidth(dfont, "powered by simulation framework") /2),
+                    math.floor(Window.Height/2 + 24 + dfont.charh/2), 
                     ColorF.Lerp(ColorF.Black,ColorF.White,lerp)
                 );
                 break;
