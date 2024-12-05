@@ -1,4 +1,8 @@
-﻿public class ease {
+﻿using SimulationFramework;
+
+namespace thrustr.utils;
+
+public class ease {
     public const float _c1 = 1.70158f;
     public const float _c2 = 2.5949095f;
     public const float _c3 = 2.70158f;

@@ -1,4 +1,10 @@
-﻿public class intro {
+﻿using SimulationFramework;
+using SimulationFramework.Drawing;
+using thrustr.utils;
+
+namespace thrustr.basic;
+
+public class intro {
     static ITexture enginetex;
     static ITexture sftex;
 
@@ -11,10 +17,14 @@
     static float introstart = 0;
 
     public static void loadintro() {
-        enginetex = Graphics.LoadTexture(@"assets\thrustr\logos\engine logo.png");
-        sftex = Graphics.LoadTexture(@"assets\thrustr\logos\sf logo.png");
+        enginetex.trydispose();
+        sftex.trydispose();
+        fadesfx.trydispose();
 
-        fadesfx = Audio.LoadSound(@"assets\thrustr\audio\introfade.wav");
+        enginetex = Graphics.LoadTexture(@"thrustr\assets\sprites\icons\engine logo.png");
+        sftex = Graphics.LoadTexture(@"thrustr\assets\sprites\icons\sf logo.png");
+
+        fadesfx = Audio.LoadSound(@"thrustr\assets\audio\introfade.wav");
     }
 
     public static void playintro() {
@@ -36,8 +46,8 @@
             case 0:
                 fontie.rendertext(
                     c, dfont,
-                    "a game by viylouu and lucas-code", 
-                    math.round(Window.Width/2 - fontie.predicttextwidth(dfont, "a game by viylouu and lucas-code") /2), 
+                    "a game by ???",
+                    math.round(Window.Width/2 - fontie.predicttextwidth(dfont, "a game by ???") /2), 
                     math.floor(Window.Height/2 - dfont.charh/2), 
                     ColorF.Lerp(ColorF.Black,ColorF.White,lerp)
                 );
@@ -62,7 +72,7 @@
                 );
                 fontie.rendertext(
                     c, dfont,
-                    "v 0.1.1",
+                    "v 0.1.2",
                     math.round(Window.Width/2 - fontie.predicttextwidth(dfont, "v 0.1.2")/2),
                     math.floor(Window.Height/2 + 49/2f + dfont.charh+4),
                     ColorF.Lerp(ColorF.Black, ColorF.White, lerp)

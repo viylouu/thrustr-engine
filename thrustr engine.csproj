@@ -8,40 +8,47 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="SimulationFramework" Version="0.3.0-alpha.9" />
-    <PackageReference Include="SimulationFramework.Desktop" Version="0.3.0-alpha.9" />
-    <PackageReference Include="SimulationFramework.OpenGL" Version="0.3.0-alpha.9" />
+    <PackageReference Include="SimulationFramework" Version="0.3.0-alpha.11" />
+    <PackageReference Include="SimulationFramework.Desktop" Version="0.3.0-alpha.11" />
+    <PackageReference Include="SimulationFramework.OpenGL" Version="0.3.0-alpha.11" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="assets\fonts\font.png">
+    <None Update="thrustr\assets\fonts\def font.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="assets\thrustr\audio\introfade.wav">
+    <None Update="thrustr\assets\fonts\def font.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="assets\thrustr\logos\engine logo grayscale.png">
+    <None Update="thrustr\assets\audio\introfade.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="assets\thrustr\logos\engine logo.png">
+    <None Update="thrustr\assets\editor\3D\meshes\translate.fbx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="assets\thrustr\logos\engine small grayscale.png">
+    <None Update="thrustr\assets\sprites\icons\engine logo grayscale.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="assets\thrustr\logos\engine small.png">
+    <None Update="thrustr\assets\sprites\icons\engine logo.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="assets\thrustr\logos\sf logo grayscale.png">
+    <None Update="thrustr\assets\sprites\icons\engine small grayscale.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="assets\thrustr\logos\sf logo.png">
+    <None Update="thrustr\assets\sprites\icons\engine small.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="thrustr\assets\sprites\icons\sf logo grayscale.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="thrustr\assets\sprites\icons\sf logo.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="assets\fonts\" />
+    <Folder Include="assets\" />
+    <Folder Include="thrustr\lodie\editor\" />
   </ItemGroup>
 
 </Project>

@@ -1,4 +1,11 @@
-﻿public class dithergradient : CanvasShader {
+﻿using SimulationFramework;
+using System.Numerics;
+using SimulationFramework.Drawing.Shaders;
+using static SimulationFramework.Drawing.Shaders.ShaderIntrinsics;
+
+namespace thrustr.misc;
+
+public class dithergradient : CanvasShader {
     public int[] dithermatrix = {
         0, 48, 12, 60,  3, 51, 15, 63,
         32, 16, 44, 28, 35, 19, 47, 31,

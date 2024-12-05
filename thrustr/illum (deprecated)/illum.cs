@@ -1,4 +1,10 @@
-﻿partial class illum {
+﻿using System.Numerics;
+using SimulationFramework;
+using SimulationFramework.Drawing;
+
+namespace thrustr.misc;
+
+partial class illum {
     static illumshad shad = new illumshad();
 
     static List<light> _l = new();

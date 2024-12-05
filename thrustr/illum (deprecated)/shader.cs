@@ -1,4 +1,11 @@
-﻿public class illumshad : CanvasShader {
+﻿using SimulationFramework;
+using System.Numerics;
+using SimulationFramework.Drawing.Shaders;
+using static SimulationFramework.Drawing.Shaders.ShaderIntrinsics;
+
+namespace thrustr.misc;
+
+public class illumshad : CanvasShader {
     public light[] l;
     public tri[] objs;
 

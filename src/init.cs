@@ -1,14 +1,16 @@
-﻿partial class main {
+﻿using SimulationFramework;
+using SimulationFramework.Drawing;
+
+using thrustr.basic;
+
+partial class main {
     static void init() {
         Simulation.SetFixedResolution(320, 180, Color.Black);
-
-        dfonttex = Graphics.LoadTexture(@"assets\fonts\font.png");
-        dfont = fontie.genfont(dfonttex, " !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz");
 
         intro.loadintro();
         intro.playintro();
 
-        Window.SetIcon(Graphics.LoadTexture(@"assets\thrustr\logos\engine small.png"));
+        Window.SetIcon(Graphics.LoadTexture(@"thrustr\assets\sprites\icons\engine small.png"));
 
         Window.Title = "thrustr engine";
     }

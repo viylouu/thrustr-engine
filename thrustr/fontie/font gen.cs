@@ -1,4 +1,13 @@
-﻿public class fontie {
+﻿using SimulationFramework.Drawing;
+using System.Numerics;
+using SimulationFramework;
+
+namespace thrustr.basic;
+
+public class fontie {
+    public static ITexture dfonttex = Graphics.LoadTexture(@"thrustr\assets\fonts\def font.png");
+    public static font dfont = genfont_wpath(dfonttex, @"thrustr\assets\fonts\def font.txt");
+
     public static font genfont(ITexture _tex, string _chars) {
         font font = new();
 
@@ -25,6 +34,11 @@
         }
 
         return font;
+    }
+
+    public static font genfont_wpath(ITexture _tex, string path) {
+        string _chars = new StreamReader(path).ReadToEnd();
+        return genfont(_tex, _chars);
     }
 
     public static int predicttextwidth(font f, string text) {

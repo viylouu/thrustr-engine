@@ -1,4 +1,7 @@
-﻿using Silk.NET.SDL;
+﻿using SimulationFramework;
+using System.Numerics;
+
+namespace thrustr.utils;
 
 public class coll {
     /// <summary>checks if 2 points are colliding (why would you need this function)</summary>
