@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AssimpNet" Version="4.1.0" />
     <PackageReference Include="SimulationFramework" Version="0.3.0-alpha.11" />
     <PackageReference Include="SimulationFramework.Desktop" Version="0.3.0-alpha.11" />
     <PackageReference Include="SimulationFramework.OpenGL" Version="0.3.0-alpha.11" />
@@ -48,7 +49,7 @@
 
   <ItemGroup>
     <Folder Include="assets\" />
-    <Folder Include="thrustr\lodie\editor\" />
+    <Folder Include="thrustr\editor\editor\" />
   </ItemGroup>
 
 </Project>
