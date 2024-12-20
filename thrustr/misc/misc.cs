@@ -21,6 +21,9 @@ public static class misc_extentions {
         if(todisp != null)
             todisp.Dispose();
     }
+
+    public static void DrawText(this ICanvas c, string text, float size, float x, float y, Alignment align = Alignment.TopLeft) => c.DrawAlignedText(text, size, x,y, align);
+    public static void DrawText(this ICanvas c, string text, float size, Vector2 pos, Alignment align = Alignment.TopLeft) => c.DrawAlignedText(text, size, pos, align);
 }
 
 public class misc {
