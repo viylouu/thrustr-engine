@@ -10,7 +10,7 @@ partial class main {
 
         if (!intro.introplayed)
         { intro.dointro(c, fontie.dfont); return; }
-    
+
         fontie.rendertext(c, fontie.dfont, $"{math.round(1/Time.DeltaTime)} fps", 3,3, ColorF.White);
     }
 }

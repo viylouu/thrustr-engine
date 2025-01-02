@@ -5,7 +5,7 @@ using thrustr.basic;
 
 partial class main {
     static void init() {
-        Simulation.SetFixedResolution(320, 180, Color.Black);
+        Simulation.SetFixedResolution(640, 360, Color.Black);
 
         intro.loadintro();
         intro.playintro();
