@@ -30,6 +30,9 @@ partial class stackr {
 
     public static ssobj createobj(ITexture stack, Vector2 size)
         => new ssobj() { stack = stack, size = size, layers = (int)math.round(stack.Height/size.Y) };
+    
+    public static ssobj createobj(ITexture stack, Vector2 size, Color tint)
+        => new ssobj() { stack = stack, size = size, layers = (int)math.round(stack.Height/size.Y), tint = tint.ToColorF() };
 
     public static void addobj(ssobj obj, Vector3? pos = null, float rot = 0) {
         if(pos == null)
@@ -85,7 +88,8 @@ partial class stackr {
                         s_objs[i].a.obj.size.X, s_objs[i].a.obj.size.Y,
                         Alignment.TopLeft
                     ),
-                    new Rectangle(Vector2.Zero,s_objs[i].a.obj.size,Alignment.Center)
+                    new Rectangle(Vector2.Zero,s_objs[i].a.obj.size,Alignment.Center),
+                    s_objs[i].a.obj.tint
                 );
 
                 c.ResetState();

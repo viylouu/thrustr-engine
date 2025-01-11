@@ -72,8 +72,8 @@ public class intro {
                 );
                 fontie.rendertext(
                     c, dfont,
-                    "v 0.1.3",
-                    math.round(Window.Width/2 - fontie.predicttextwidth(dfont, "v 0.1.3")/2),
+                    "v 0.1.3.1",
+                    math.round(Window.Width/2 - fontie.predicttextwidth(dfont, "v 0.1.3.1")/2),
                     math.floor(Window.Height/2 + 49/2f + dfont.charh+4),
                     ColorF.Lerp(ColorF.Black, ColorF.White, lerp)
                 );
