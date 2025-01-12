@@ -112,6 +112,9 @@ public class intro {
     */
 
     public static void dostuff(ICanvas c, font? f) {
+        if((introstart -10f)*1.25f >= 1)
+            return;
+
         if(f == null)
             f = fontie.dfont;
 
@@ -119,8 +122,8 @@ public class intro {
 
         // bg
 
-        float start = ease.ocirc(introstart*1.25f) *-96 +96;
-        float end = ease.icirc((introstart -10f)*1.25f) *96;
+        float start = ease.ocirc(introstart*1.25f) *-100 +100;
+        float end = ease.icirc((introstart -10f)*1.25f) *100;
 
         c.Fill(Color.Black);
         c.DrawPolygon(
@@ -128,6 +131,16 @@ public class intro {
                 new(0-start-end,Window.Height-32),
                 new(0-start-end,Window.Height),
                 new(96-start-end,Window.Height),
+                new(72-start-end,Window.Height-32)
+            }
+        );
+
+        c.Stroke(Color.White);
+        c.DrawPolygon(
+            new Vector2[] {
+                new(0-start-end,Window.Height-32),
+                new(0-start-end,Window.Height+24),
+                new(120-start-end,Window.Height+24),
                 new(72-start-end,Window.Height-32)
             }
         );
