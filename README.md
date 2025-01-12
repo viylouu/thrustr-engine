@@ -7,12 +7,17 @@
 - game objects
 - components
 - scenes
+- networking
+- lighting
+- custom programming language
 
 ## current features
 - a "font renderer"
-- a math library
-- an easings library
+- a math class
+- an easings class
+- a collision class (unfinished)
 - an intro player
+- a sprite-stack renderer
 
 # requirements
 - SimulationFramework (0.3.0-alpha.11)             (graphical stuff and shaders)
