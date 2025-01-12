@@ -112,7 +112,7 @@ public class intro {
     */
 
     public static void dostuff(ICanvas c, font? f) {
-        if((introstart -10f)*1.25f >= 1 || introstart < 0)
+        if((introstart -10f)*1.25f >= 1)
             return;
 
         if(f == null)
