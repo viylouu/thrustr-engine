@@ -18,7 +18,7 @@ public struct stk {
 }
 
 partial class stackr {
-    public static Vector2 cam;
+    public static Vector3 cam;
     public static float camrot;
 
     public static int obj_count => objs.Count;
@@ -52,12 +52,12 @@ partial class stackr {
             foreach (var item in objs) {
                 bool inserted = false;
 
-                Vector2 pos2 = new (item.pos.X -cam.X,item.pos.Z -cam.Y);
+                Vector2 pos2 = new (item.pos.X -cam.X,item.pos.Z -cam.Z);
                 pos2 = Vector2.Transform(pos2, rot);
                 pos2 += new Vector2(c.Width/2, c.Height/2 -item.pos.Y);
 
                 for (int i = 0; i < s_objs.Count; i++) {
-                    Vector2 pos1 = new (s_objs[i].a.pos.X -cam.X,s_objs[i].a.pos.Z -cam.Y);
+                    Vector2 pos1 = new (s_objs[i].a.pos.X -cam.X,s_objs[i].a.pos.Z -cam.Z);
                     pos1 = Vector2.Transform(pos1, rot);
                     pos1 += new Vector2(c.Width/2,c.Height/2 -s_objs[i].a.pos.Y);
 
@@ -78,7 +78,7 @@ partial class stackr {
 
         for(int i = 0; i < s_objs.Count; i++)
             for(int j = 0; j < s_objs[i].a.obj.layers; j++) {
-                c.Translate(s_objs[i].b.X,s_objs[i].b.Y -j);
+                c.Translate(s_objs[i].b.X,s_objs[i].b.Y -j -cam.Y);
                 c.Rotate(camrot+s_objs[i].a.rot);
 
                 c.DrawTexture(
