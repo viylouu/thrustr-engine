@@ -6,10 +6,9 @@ using thrustr.utils;
 
 partial class main {
     static void rend(ICanvas c) {
-        c.Clear(Color.Black);
+        c.Clear(Color.White);
 
-        if (!intro.introplayed)
-        { intro.dointro(c, fontie.dfont); return; }
+        intro.dostuff(c, null);
 
         fontie.rendertext(c, fontie.dfont, $"{math.round(1/Time.DeltaTime)} fps", 3,3, ColorF.White);
     }
