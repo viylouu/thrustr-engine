@@ -26,5 +26,5 @@
 - AssimpNet                                        (fbx importing inside of misc.cs)
 
 ## installing requirements
-here is a basic command to install the requirements
+here is a basic command to install the requirements  
 ``` dotnet add package SimulationFramework -v 0.3.0-alpha.11 | dotnet add package SimulationFramework.Desktop -v 0.3.0-alpha.11 | dotnet add package SimulationFramework.OpenGL -v 0.3.0-alpha.11 | dotnet add package AssimpNet ```
