@@ -5,8 +5,8 @@ using SimulationFramework;
 namespace thrustr.basic;
 
 public class fontie {
-    public static ITexture dfonttex = Graphics.LoadTexture(@"thrustr\assets\fonts\def font.png");
-    public static font dfont = genfont_wpath(dfonttex, @"thrustr\assets\fonts\def font.txt");
+    public static ITexture dfonttex = Graphics.LoadTexture("thrustr/assets/fonts/def font.png");
+    public static font dfont = genfont_wpath(dfonttex, "thrustr/assets/fonts/def font.txt");
 
     public static font genfont(ITexture _tex, string _chars) {
         font font = new();

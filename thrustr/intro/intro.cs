@@ -27,12 +27,12 @@ public class intro {
         smallsftex.trydispose();
         fadesfx.trydispose();
 
-        enginetex = Graphics.LoadTexture(@"thrustr\assets\sprites\icons\engine logo.png");
-        sftex = Graphics.LoadTexture(@"thrustr\assets\sprites\icons\sf logo.png");
-        smallenginetex = Graphics.LoadTexture(@"thrustr\assets\sprites\icons\engine small.png");
-        smallsftex = Graphics.LoadTexture(@"thrustr\assets\sprites\icons\sf logo small.png");
+        enginetex = Graphics.LoadTexture("thrustr/assets/sprites/icons/engine logo.png");
+        sftex = Graphics.LoadTexture("thrustr/assets/sprites/icons/sf logo.png");
+        smallenginetex = Graphics.LoadTexture("thrustr/assets/sprites/icons/engine small.png");
+        smallsftex = Graphics.LoadTexture("thrustr/assets/sprites/icons/sf logo small.png");
 
-        fadesfx = Audio.LoadSound(@"thrustr\assets\audio\introfade.wav");
+        fadesfx = Audio.LoadSound("thrustr/assets/audio/introfade.wav");
 
         introstate = 1; 
         introplayed = false;

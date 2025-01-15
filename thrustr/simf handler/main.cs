@@ -24,7 +24,7 @@ public class handle {
     static void ini() {
         intro.initintro();
 
-        Window.SetIcon(Graphics.LoadTexture(@"thrustr\assets\sprites\icons\engine small.png"));
+        Window.SetIcon(Graphics.LoadTexture("thrustr/assets/sprites/icons/engine small.png"));
 
         Window.Title = "thrustr engine";
 
