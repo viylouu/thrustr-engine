@@ -7,6 +7,6 @@ partial class main {
        => handle.init(init, rend);
     
     static void init() {
-        //Simulation.SetFixedResolution(640, 360, Color.Black);
+        Simulation.SetFixedResolution(640, 360, Color.Black);
     }
 }
