@@ -27,18 +27,52 @@ public class math {
 
     /// <summary>rounds a number</summary>
     public static float round(float a) => MathF.Round(a);
+    /// <summary>rounds a number</summary>
+    public static Vector2 round(Vector2 a) => new (MathF.Round(a.X), MathF.Round(a.Y));
+    /// <summary>rounds a number</summary>
+    public static Vector3 round(Vector3 a) => new (MathF.Round(a.X), MathF.Round(a.Y), MathF.Round(a.Z));
+
     /// <summary>rounds a number up</summary>
     public static float ceil(float a) => MathF.Ceiling(a);
+    /// <summary>rounds a number up</summary>
+    public static Vector2 ceil(Vector2 a) => new (MathF.Ceiling(a.X), MathF.Ceiling(a.Y));
+    /// <summary>rounds a number up</summary>
+    public static Vector3 ceil(Vector3 a) => new (MathF.Ceiling(a.X), MathF.Ceiling(a.Y), MathF.Ceiling(a.Z));
+
     /// <summary>rounds a number down</summary>
     public static float floor(float a) => MathF.Floor(a);
+    /// <summary>rounds a number down</summary>
+    public static Vector2 floor(Vector2 a) => new (MathF.Floor(a.X), MathF.Floor(a.Y));
+    /// <summary>rounds a number down</summary>
+    public static Vector3 floor(Vector3 a) => new (MathF.Floor(a.X), MathF.Floor(a.Y), MathF.Floor(a.Z));
+
     /// <summary>calculates the absolute value of a number</summary>
     public static float abs(float a) => MathF.Abs(a);
-    /// <summary>calculates a^b</summary>
-    public static float pow(float a, float b) => MathF.Pow(a,b);
+    /// <summary>calculates the absolute value of a number</summary>
+    public static Vector2 abs(Vector2 a) => new (MathF.Abs(a.X), MathF.Abs(a.Y));
+    /// <summary>calculates the absolute value of a number</summary>
+    public static Vector3 abs(Vector3 a) => new (MathF.Abs(a.X), MathF.Abs(a.Y), MathF.Abs(a.Z));
+    
     /// <summary>clamps a number between two values (b and c)</summary>
     public static float clamp(float a, float b, float c) => Math.Clamp(a,b,c);
+    /// <summary>clamps a number between two values (b and c)</summary>
+    public static Vector2 clamp(Vector2 a, float b, float c) => new (Math.Clamp(a.X,b,c), Math.Clamp(a.Y,b,c));
+    /// <summary>clamps a number between two values (b and c)</summary>
+    public static Vector3 clamp(Vector3 a, float b, float c) => new (Math.Clamp(a.X,b,c), Math.Clamp(a.Y,b,c), Math.Clamp(a.Z,b,c));
+    /// <summary>clamps a number between two values (b and c)</summary>
+    public static Vector2 clamp(Vector2 a, Vector2 b, Vector2 c) => new (Math.Clamp(a.X,b.X,c.X), Math.Clamp(a.Y,b.Y,c.Y));
+    /// <summary>clamps a number between two values (b and c)</summary>
+    public static Vector3 clamp(Vector3 a, Vector3 b, Vector3 c) => new (Math.Clamp(a.X,b.X,c.X), Math.Clamp(a.Y,b.Y,c.Y), Math.Clamp(a.Z,b.Z,c.Z));
+
     /// <summary>clamps a number between 0 and 1</summary>
-    public static float clamp01(float a) => Math.Clamp(a,0,1);
+    public static float clamp01(float a) => clamp(a,0,1);
+    /// <summary>clamps a number between 0 and 1</summary>
+    public static Vector2 clamp01(Vector2 a) => clamp(a,0,1);
+    /// <summary>clamps a number between 0 and 1</summary>
+    public static Vector3 clamp01(Vector3 a) => clamp(a,0,1);
+
+    /// <summary>calculates a^b</summary>
+    public static float pow(float a, float b) => MathF.Pow(a,b);
     /// <summary>calculates the square root of a number</summary>
     public static float sqrt(float a) => MathF.Sqrt(a);
     /// <summary>calculates the cube root of a number</summary>
@@ -84,7 +118,7 @@ public class math {
     /// <summary>linearly interpolates between a and b at point t</summary>
     public static float lerp(float a, float b, float t) => float.Lerp(a, b, t);
     /// <summary>linearly interpolates between 2 angles (a and b) at point t</summary>
-    public static float lerpand(float a, float b, float t) => Angle.Lerp(a, b, t);
+    public static float lerpang(float a, float b, float t) => Angle.Lerp(a, b, t);
     /// <summary>converts an angle (radians) to a vector2</summary>
     public static Vector2 tovec(float theta) => Angle.ToVector(theta);
     /// <summary>lerps between a and b based on x</summary>
