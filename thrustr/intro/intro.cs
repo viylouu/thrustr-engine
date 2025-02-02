@@ -1,4 +1,5 @@
 ﻿using System.Numerics;
+using Silk.NET.OpenAL;
 using SimulationFramework;
 using SimulationFramework.Drawing;
 using thrustr.utils;
@@ -86,7 +87,7 @@ public class intro {
 
         fontie.rendertext(c, "thrustr", new(6-ease2, Window.Height-28+down2));
         fontie.rendertext(c, "engine", new(12-ease3, Window.Height-22+down3));
-        fontie.rendertext(c, "v0.1.4.1", new(4-ease4, Window.Height-8+down4));
+        fontie.rendertext(c, "v0.1.4.1", new(4-ease4, Window.Height-2+down4), Alignment.BottomLeft);
 
         // simulationframework logo
 
@@ -104,6 +105,6 @@ public class intro {
 
         fontie.rendertext(c, "simulation", new(6-ease6, Window.Height-28+down6));
         fontie.rendertext(c, "framework", new(8-ease7, Window.Height-22+down7));
-        fontie.rendertext(c, "v0.3.0 a12", new(4-ease8, Window.Height-8+down8));
+        fontie.rendertext(c, "v0.3.0 a12", new(4-ease8, Window.Height-2+down8), Alignment.BottomLeft);
     }
 }
