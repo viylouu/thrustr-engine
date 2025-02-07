@@ -1,7 +1,8 @@
 ﻿using System.Numerics;
-using Silk.NET.OpenAL;
+
 using SimulationFramework;
 using SimulationFramework.Drawing;
+
 using thrustr.utils;
 
 namespace thrustr.basic;

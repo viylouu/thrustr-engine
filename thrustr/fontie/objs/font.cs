@@ -10,9 +10,3 @@ public class font {
 
     public caseness fcase;
 }
-
-public enum caseness { 
-    lower,
-    both,
-    upper
-}

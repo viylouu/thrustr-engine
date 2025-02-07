@@ -1,8 +1,7 @@
 ﻿using SimulationFramework.Drawing;
-using System.Numerics;
 using SimulationFramework;
-using ImGuiNET;
-using thrustr.utils;
+
+using System.Numerics;
 
 namespace thrustr.basic;
 
@@ -97,14 +96,14 @@ public class fontie {
                 px -= predicttextwidth(text,f);
                 break;
             case Alignment.CenterLeft:
-                py += math.lerp(f.charh-f.charb,-f.chart,.5f); //bad
+                py += (f.charh-f.charb + -f.chart) * .5f;
                 break;
             case Alignment.CenterRight:
-                py += math.lerp(f.charh-f.charb,-f.chart,.5f); //bad
+                py += (f.charh-f.charb + -f.chart) * .5f;
                 px -= predicttextwidth(text,f);
                 break;
             case Alignment.Center:
-                py += math.lerp(f.charh-f.charb,-f.chart,.5f); //bad
+                py += (f.charh-f.charb + -f.chart) * .5f;
                 px -= predicttextwidth(text,f)/2f;
                 break;
             case Alignment.TopCenter:
