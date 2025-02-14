@@ -89,30 +89,30 @@ public class fontie {
                 break;
             case Alignment.TopRight:
                 py -= f.chart;
-                px -= predicttextwidth(text,f);
+                px -= predicttextwidth(text,f)-f.charw;
                 break;
             case Alignment.BottomRight:
                 py += f.charh-f.charb;
-                px -= predicttextwidth(text,f);
+                px -= predicttextwidth(text,f)-f.charw;
                 break;
             case Alignment.CenterLeft:
                 py += (f.charh-f.charb + -f.chart) * .5f;
                 break;
             case Alignment.CenterRight:
                 py += (f.charh-f.charb + -f.chart) * .5f;
-                px -= predicttextwidth(text,f);
+                px -= predicttextwidth(text,f)-f.charw;
                 break;
             case Alignment.Center:
                 py += (f.charh-f.charb + -f.chart) * .5f;
-                px -= predicttextwidth(text,f)/2f;
+                px -= (predicttextwidth(text,f)-f.charw)/2f;
                 break;
             case Alignment.TopCenter:
                 py -= f.chart;
-                px -= predicttextwidth(text,f)/2f;
+                px -= (predicttextwidth(text,f)-f.charw)/2f;
                 break;
             case Alignment.BottomCenter:
                 py += f.charh-f.charb;
-                px -= predicttextwidth(text,f)/2f;
+                px -= (predicttextwidth(text,f)-f.charw)/2f;
                 break;
         }
 
