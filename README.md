@@ -27,4 +27,4 @@
 
 ## installing requirements
 here is a basic command to install the requirements  
-``` dotnet add package SimulationFramework -v 0.3.0-alpha.12 | dotnet add package SimulationFramework.Desktop -v 0.3.0-alpha.12 | dotnet add package SimulationFramework.OpenGL -v 0.3.0-alpha.12 | dotnet add package AssimpNet ```
+``` dotnet add package SimulationFramework -v 0.3.0-alpha.13 | dotnet add package SimulationFramework.Desktop -v 0.3.0-alpha.13 | dotnet add package SimulationFramework.OpenGL -v 0.3.0-alpha.13 | dotnet add package AssimpNet ```
