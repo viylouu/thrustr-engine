@@ -156,6 +156,11 @@ public class math {
     /// <summary>returns a vector that is perpendicular to both of the input vectors</summary>
     public static Vector3 cross(Vector3 x, Vector3 y) => Vector3.Cross(x,y);
 
+    /// <summary>returns a number, that when going beyond a specific value, resets to zero</summary>
+    public static float mod(float a, float b) => a%b;
+    /// <summary>returns a number, that when going beyond a specific value, resets to zero, but if it goes below zero, it wraps around to the max</summary>
+    public static float wmod(float a, float b) => ((a%b)+b)%b;
+
     //trig
 
     /// <summary>calculates the cosine of a number</summary>
