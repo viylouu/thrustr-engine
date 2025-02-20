@@ -158,8 +158,24 @@ public class math {
 
     /// <summary>returns a number, that when going beyond a specific value, resets to zero</summary>
     public static float mod(float a, float b) => a%b;
+    /// <summary>returns a number, that when going beyond a specific value, resets to zero</summary>
+    public static Vector2 mod(Vector2 a, float b) => new(a.X%b,a.Y%b);
+    /// <summary>returns a number, that when going beyond a specific value, resets to zero</summary>
+    public static Vector3 mod(Vector3 a, float b) => new(a.X%b,a.Y%b,a.Z%b);
+    /// <summary>returns a number, that when going beyond a specific value, resets to zero</summary>
+    public static Vector2 mod(Vector2 a, Vector2 b) => new(a.X%b.X,a.Y%b.Y);
+    /// <summary>returns a number, that when going beyond a specific value, resets to zero</summary>
+    public static Vector3 mod(Vector3 a, Vector3 b) => new(a.X%b.X,a.Y%b.Y,a.Z%b.Z);
     /// <summary>returns a number, that when going beyond a specific value, resets to zero, but if it goes below zero, it wraps around to the max</summary>
     public static float wmod(float a, float b) => ((a%b)+b)%b;
+    /// <summary>returns a number, that when going beyond a specific value, resets to zero, but if it goes below zero, it wraps around to the max</summary>
+    public static Vector2 wmod(Vector2 a, float b) => new(wmod(a.X,b),wmod(a.Y,b));
+    /// <summary>returns a number, that when going beyond a specific value, resets to zero, but if it goes below zero, it wraps around to the max</summary>
+    public static Vector3 wmod(Vector3 a, float b) => new(wmod(a.X,b),wmod(a.Y,b),wmod(a.Z,b));
+    /// <summary>returns a number, that when going beyond a specific value, resets to zero, but if it goes below zero, it wraps around to the max</summary>
+    public static Vector2 wmod(Vector2 a, Vector2 b) => new(wmod(a.X,b.X),wmod(a.Y,b.Y));
+    /// <summary>returns a number, that when going beyond a specific value, resets to zero, but if it goes below zero, it wraps around to the max</summary>
+    public static Vector3 wmod(Vector3 a, Vector3 b) => new(wmod(a.X,b.X),wmod(a.Y,b.Y),wmod(a.Z,b.Z));
 
     //trig
 
