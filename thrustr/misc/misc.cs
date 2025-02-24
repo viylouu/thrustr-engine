@@ -3,6 +3,7 @@ using SimulationFramework;
 using SimulationFramework.Drawing;
 
 using Assimp;
+using thrustr.basic;
 
 namespace thrustr.utils;
 
@@ -31,7 +32,8 @@ public static class misc {
 
         Scene scene = imp.ImportFile(path, PostProcessSteps.Triangulate);
 
-        Console.WriteLine($"loading fbx file at \"{path}\"");
+        if(handle.debug)
+            Console.WriteLine($"loading fbx file at \"{path}\"");
 
         List<Vector3> verts = new();
         List<uint> inds = new();
@@ -43,9 +45,11 @@ public static class misc {
 
         if(scene != null && scene.HasMeshes)
             foreach(var mesh in scene.Meshes) {
-                Console.WriteLine($"found \"{mesh.Name}\"");
-                Console.WriteLine($"{mesh.VertexCount} vertices");
-                Console.WriteLine($"{mesh.FaceCount} faces");
+                if(handle.debug) {
+                    Console.WriteLine($"found \"{mesh.Name}\"");
+                    Console.WriteLine($"{mesh.VertexCount} vertices");
+                    Console.WriteLine($"{mesh.FaceCount} faces");
+                }
 
                 foreach(var vert in mesh.Vertices)
                     verts.Add(new(vert.X, vert.Y, vert.Z));
@@ -56,7 +60,8 @@ public static class misc {
                         inds.Add((uint)face.Indices[1]);
                         inds.Add((uint)face.Indices[2]);
                     } else {
-                        Console.WriteLine($"error! invalid face count ({face.IndexCount}) expected (3)");
+                        if(handle.debug)
+                            Console.WriteLine($"error! invalid face count ({face.IndexCount}) expected (3)");
                         return (def_v,def_i,def_t);
                     }
 
@@ -64,13 +69,14 @@ public static class misc {
                     for(int i = 0; i < mesh.VertexCount; i++)
                         texcoords.Add(new(mesh.TextureCoordinateChannels[0][i].X, mesh.TextureCoordinateChannels[0][i].Y));
                 else {
-                    Console.WriteLine("error! no texture coordinates found");
+                    if(handle.debug)
+                        Console.WriteLine("error! no texture coordinates found");
                     return (def_v,def_i,def_t);
                 }
             }
-        else
+        else if(handle.debug)
             Console.WriteLine("no meshes found / failed to load file");
-
+        
         success = true;
         return (verts.ToArray(), inds.ToArray(), texcoords.ToArray());
     }

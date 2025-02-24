@@ -5,7 +5,7 @@ using thrustr.editor;
 
 namespace thrustr.basic;
 
-public class handle {
+public static class handle {
     static Action _start;
     static Action<Canvas> _render;
 
@@ -13,6 +13,7 @@ public class handle {
 
     public static bool do_intro = true;
     public static font? intro_font = null;
+    public static bool debug;
 
 
     public static void init(Action start, Action<Canvas> render) {
@@ -20,6 +21,8 @@ public class handle {
         _render = render;
 
         editorui.load();
+
+        editor.editor.init();
 
         Simulation sim = Simulation.Create(ini, rend);
         sim.Run();

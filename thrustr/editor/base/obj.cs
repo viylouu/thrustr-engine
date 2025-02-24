@@ -1,7 +1,6 @@
-﻿namespace thrustr.obj;
+﻿namespace thrustr.editor;
 
 public class obj {
-    public transform trans;
-    public obj[] childs;
-    public component[] compons;
+    public List<obj> childs;
+    public List<component> comps;
 }
