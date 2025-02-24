@@ -81,9 +81,9 @@ public class intro {
 
         c.DrawTexture(smallenginetex, new Vector2(48-ease1,c.Height+down1), Alignment.BottomLeft);
 
-        fontie.rendertext(c, "thrustr", new(6-ease2, c.Height-28+down2));
-        fontie.rendertext(c, "engine", new(12-ease3, c.Height-22+down3));
-        fontie.rendertext(c, "v0.1.4.2", new(4-ease4, c.Height-2+down4), Alignment.BottomLeft);
+        c.f_DrawText("thrustr", new(6-ease2, c.Height-28+down2));
+        c.f_DrawText("engine", new(12-ease3, c.Height-22+down3));
+        c.f_DrawText("v0.1.4.2", new(4-ease4, c.Height-2+down4), Alignment.BottomLeft);
 
         // simulationframework logo
 
@@ -99,8 +99,8 @@ public class intro {
 
         c.DrawTexture(smallsftex, new Vector2(48-ease5,c.Height+down5), Alignment.BottomLeft);
 
-        fontie.rendertext(c, "simulation", new(6-ease6, c.Height-28+down6));
-        fontie.rendertext(c, "framework", new(8-ease7, c.Height-22+down7));
-        fontie.rendertext(c, "v0.3.0 a13", new(4-ease8, c.Height-2+down8), Alignment.BottomLeft);
+        c.f_DrawText("simulation", new(6-ease6, c.Height-28+down6));
+        c.f_DrawText("framework", new(8-ease7, c.Height-22+down7));
+        c.f_DrawText("v0.3.0 a13", new(4-ease8, c.Height-2+down8), Alignment.BottomLeft);
     }
 }

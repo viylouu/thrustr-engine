@@ -34,9 +34,9 @@ it is in the namespace "thrustr.basic"
 
 --  usage  --
 
-you can create new fonts by creating a variable of type font, and assigning it to fontie.gen_font()
+you can create new fonts by creating a variable of type font, and assigning it to font.gen_font()
 
-fontie.gen_font() accepts 4 parameters
+font.gen_font() accepts 4 parameters
     1. the texture
     2. the character set
     3. the distance from the top of the sprite and the top of the actual characters excluding accents (OPTIONAL)
@@ -45,7 +45,7 @@ fontie.gen_font() accepts 4 parameters
 the texture is just an atlas of all of the characters, layed out horizontally, with the same spacing
 the character set is a string that contains all of the characters in the texture, in order of how they appear
 
-you can also use fontie.genfont_wpath()
+you can also use font.gen_font_wpath()
 
 it also has 4 parameters
     1. the texture
@@ -53,27 +53,28 @@ it also has 4 parameters
     3. the distance from the top of the sprite and the top of the actual characters excluding accents (OPTIONAL)
     4. the distance from the top of the sprite and the bottom of the actual characters excluding parts that hang down (OPTIONAL)
 
-the texture is the same as fontie.gen_font()
+the texture is the same as font.gen_font()
 the path is the directory of a charater set file
 
 the only difference between these is that the genfont_wpath function reads the data from a file instead of hardcoding it
 
 
-you can render fonts by calling the fontie.render_text() function
+you can render fonts by calling the ICanvas.f_DrawText() function (ICanvas being a class from SimulationFramework.Drawing that is provided in the render function)
 
-fontie.render_text() accepts 6/7 parameters
-    1. the canvas
-    2. the text
-    3. the position (can be a Vector2 or 2 floats)
-    4. the alignment (OPTIONAL)
+ICanvas.f_DrawText() accepts 6/7 parameters
+    1. the text
+    2. the position (can be a Vector2 or 2 floats)
+    3. the alignment (OPTIONAL)
+    4. the scale (OPTIONAL)
     5. the font (OPTIONAL)
     6. the tint (can be a Color or a ColorF) (OPTIONAL)
 
 currently there is 1 helper function that fontie provides: fontie.predicttextwidth
 
-it accepts 2 parameters
+it accepts 3 parameters
     1. the text
-    2. the font (OPTIONAL)
+    2. the scale (OPTIONAL)
+    3. the font (OPTIONAL)
 
 this returns the width in pixels of some text when rendered in the specified font
 

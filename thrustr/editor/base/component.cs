@@ -7,5 +7,5 @@ public class component {
     public Action? update;
     public Action? fixupdate;
 
-    public object[] aparams;
+    public object[] sparams;
 }
