@@ -90,16 +90,16 @@ do it, it is in most cases more comfy than 3D models on your computer, and geome
 increase computer strain unlike 3D models. The catch, of course, is that unless you get really advanced, 
 you cannot create a lighting system akin to a regular 3D game."
 
-stackr is in the "thrustr.stackr" namespace ("cool i have my own namespace :D" -stackr 2025)
+stackr is in the "thrustr.stackr" namespace
 
 how to use stackr:
 
 first you need to populate your scene
-you can do this with the stackr.addobj() function
+you can do this with the stackr.add_obj() function
 
 --  adding an object  --
 
-the addobj function has 3 parameters
+the add_obj function has 3 parameters
     1. the object
     2. the position (optional)
     3. the rotation (optional)
@@ -115,7 +115,7 @@ it has 4 variables:
     the layer count
     the tint
 
-you can create an ssobj using stackr.createobj()
+you can create an ssobj using stackr.create_obj()
 
 this has 3 parameters
     1. the stack texture
@@ -138,15 +138,12 @@ the rotation is a float that stores it's worldspace rotation in radians
 
 you can render the scene using 1 of 2 functions
 
-stackr.render()
-stackr.render_with_clear()
+ICanvas.s_RenderScene()
+ICanvas.s_RenderSceneAndClear()
 
-stackr.render_with_clear() just calls the render function, and clears the scene
-it has the same parameters as stackr.render()
+ICanvas.s_RenderSceneAndClear() just calls the render function, and clears the scene
 
-stackr.render() renders the scene
-it has 1 parameter: the canvas
-
+ICanvas.s_RenderScene() renders the scene
 this renders using a camera, which you can set
 
 the camera can be set with 2 variables

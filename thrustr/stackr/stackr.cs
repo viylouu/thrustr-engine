@@ -1,23 +1,13 @@
 using System.Numerics;
+
 using SimulationFramework;
 using SimulationFramework.Drawing;
+
 using thrustr.utils;
 
 namespace thrustr.stackr;
 
-public struct stk {
-    public ssobj obj { get; set; }
-    public Vector3 pos { get; set; }
-    public float rot { get; set; }
-
-    public stk(ssobj o, Vector3 p, float r) {
-        obj = o;
-        pos = p;
-        rot = r;
-    }
-}
-
-partial class stackr {
+public static class stackr {
     public static Vector3 cam;
     public static float camrot;
 
@@ -28,20 +18,20 @@ partial class stackr {
     static List<stk> objs = new();
     static List<(stk a, Vector2 b)> s_objs = new();
 
-    public static ssobj createobj(ITexture stack, Vector2 size)
+    public static ssobj create_obj(ITexture stack, Vector2 size)
         => new ssobj() { stack = stack, size = size, layers = (int)math.round(stack.Height/size.Y) };
     
-    public static ssobj createobj(ITexture stack, Vector2 size, Color tint)
+    public static ssobj create_obj(ITexture stack, Vector2 size, Color tint)
         => new ssobj() { stack = stack, size = size, layers = (int)math.round(stack.Height/size.Y), tint = tint.ToColorF() };
 
-    public static void addobj(ssobj obj, Vector3? pos = null, float rot = 0) {
+    public static void add_obj(ssobj obj, Vector3? pos = null, float rot = 0) {
         if(pos == null)
             pos = Vector3.Zero;
 
         objs.Add(new stk(obj, (Vector3)pos, rot));
     }
 
-    public static void render(ICanvas c) {
+    public static void s_RenderScene(this ICanvas c) {
         layers_rendered = 0;
 
         s_objs.Clear();
@@ -98,8 +88,8 @@ partial class stackr {
             }
     }
 
-    public static void render_with_clear(ICanvas c) {
-        render(c);
+    public static void s_RenderSceneAndClear(this ICanvas c) {
+        s_RenderScene(c);
         objs.Clear();
     }
 }

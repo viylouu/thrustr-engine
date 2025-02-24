@@ -8,6 +8,6 @@ partial class main {
     static void rend(ICanvas c) {
         c.Clear(Color.Black);
 
-        c.f_DrawText($"{math.round(1/Time.DeltaTime)} fps", 9,14-fontie.dfont.chart*3, Alignment.TopLeft, 3);
+        c.f_DrawText($"{math.round(1/Time.DeltaTime)} fps", 3,3);
     }
 }
