@@ -19,9 +19,9 @@
 - a sprite-stack renderer
 
 # requirements
-- SimulationFramework (0.3.0-alpha.12)             (graphical stuff and shaders)
-- SimulationFramework.Desktop (0.3.0-alpha.12)     (graphical stuff and shaders)
-- SimulationFramework.OpenGL (0.3.0-alpha.12)      (graphical stuff and shaders)
+- SimulationFramework (0.3.0-alpha.13)             (graphical stuff and shaders)
+- SimulationFramework.Desktop (0.3.0-alpha.13)     (graphical stuff and shaders)
+- SimulationFramework.OpenGL (0.3.0-alpha.13)      (graphical stuff and shaders)
 - AssimpNet                                        (fbx importing inside of misc.cs)
 
 ## installing requirements
