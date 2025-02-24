@@ -9,7 +9,6 @@
 - scenes
 - networking
 - lighting
-- custom programming language
 
 ## current features
 - a "font renderer"
