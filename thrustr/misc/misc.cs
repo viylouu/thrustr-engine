@@ -6,7 +6,7 @@ using Assimp;
 
 namespace thrustr.utils;
 
-public static class misc_extentions {
+public static class misc {
     public static void trydispose(this ITexture todisp) {
         if(todisp != null)
             todisp.Dispose();
@@ -22,11 +22,7 @@ public static class misc_extentions {
             todisp.Dispose();
     }
 
-    public static void DrawText(this ICanvas c, string text, float size, float x, float y, Alignment align = Alignment.TopLeft) => c.DrawAlignedText(text, size, x,y, align);
-    public static void DrawText(this ICanvas c, string text, float size, Vector2 pos, Alignment align = Alignment.TopLeft) => c.DrawAlignedText(text, size, pos, align);
-}
 
-public class misc {
     static AssimpContext imp = new();
 
     /// <summary>loads an fbx file as a set of vertices (Vector3[]) indices (uint[]) and texture coordinates (Vector2[])</summary>

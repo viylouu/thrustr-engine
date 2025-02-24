@@ -61,13 +61,14 @@ the only difference between these is that the genfont_wpath function reads the d
 
 you can render fonts by calling the ICanvas.f_DrawText() function (ICanvas being a class from SimulationFramework.Drawing that is provided in the render function)
 
-ICanvas.f_DrawText() accepts 6/7 parameters
+ICanvas.f_DrawText() accepts 5/6 parameters
     1. the text
     2. the position (can be a Vector2 or 2 floats)
     3. the alignment (OPTIONAL)
     4. the scale (OPTIONAL)
     5. the font (OPTIONAL)
-    6. the tint (can be a Color or a ColorF) (OPTIONAL)
+
+you can change the color of the text using ICanvas.Fill()
 
 currently there is 1 helper function that fontie provides: fontie.predicttextwidth
 

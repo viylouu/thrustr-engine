@@ -3,7 +3,7 @@ using System.Numerics;
 
 namespace thrustr.utils;
 
-public class math {
+public static class math {
     //consts
 
     /// <summary>half the circumference of a circle with a radius of 1 or 180 degrees in radians</summary>

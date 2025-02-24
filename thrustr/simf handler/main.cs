@@ -1,11 +1,13 @@
 using SimulationFramework;
 using SimulationFramework.Drawing;
 
+using thrustr.editor;
+
 namespace thrustr.basic;
 
 public class handle {
     static Action _start;
-    static Action<ICanvas> _render;
+    static Action<Canvas> _render;
 
     // thrustr settings
 
@@ -13,9 +15,11 @@ public class handle {
     public static font? intro_font = null;
 
 
-    public static void init(Action start, Action<ICanvas> render) {
+    public static void init(Action start, Action<Canvas> render) {
         _start = start;
         _render = render;
+
+        editorui.load();
 
         Simulation sim = Simulation.Create(ini, rend);
         sim.Run();
@@ -32,9 +36,13 @@ public class handle {
     }
 
     static void rend(ICanvas c) {
-        _render(c);
+        Canvas canv = new(c);
+
+        _render(canv);
 
         if(do_intro)
-            intro.dostuff(c, intro_font);
+            intro.render(canv, intro_font);
+
+        editorui.render(canv);
     }
 }

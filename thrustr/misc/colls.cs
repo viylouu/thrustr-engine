@@ -3,7 +3,7 @@ using System.Numerics;
 
 namespace thrustr.utils;
 
-public class coll {
+public static class coll {
     /// <summary>checks if 2 points are colliding (why would you need this function)</summary>
     public static bool poipoi(Vector2 x, Vector2 y) => x == y;
     public static bool poipoi(float x, float y, float u, float v) => x == u && y == v;

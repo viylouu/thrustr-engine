@@ -9,6 +9,9 @@ public static class fontie {
     public static ITexture dfonttex = Graphics.LoadTexture("thrustr/assets/fonts/dfont.png");
     public static font dfont = font.gen_font_wpath(dfonttex, "thrustr/assets/fonts/dfont.txt", 4, 10);
 
+    public static ColorF? fill_color;
+
+
     public static float predicttextwidth(string text, float scale = 1f, font? f = null) {
         if(f == null)
             f = dfont;
@@ -30,11 +33,9 @@ public static class fontie {
         return (w-2)*scale;
     }
 
-    public static void f_DrawText(this ICanvas c, string text, Vector2 pos, Alignment align, float scale, font f, Color? col) => f_DrawText(c,text,pos.X,pos.Y,align,scale,f,col?.ToColorF() ?? null);
-    public static void f_DrawText(this ICanvas c, string text, Vector2 pos, Alignment align = Alignment.TopLeft, float scale = 1f, font f = null, ColorF? col = null) => f_DrawText(c,text,pos.X,pos.Y,align,scale,f,col);
-    public static void f_DrawText(this ICanvas c, string text, float px, float py, Alignment align, float scale, font f, Color col) => f_DrawText(c,text,px,py,align,scale,f,col.ToColorF());
+    public static void f_DrawText(this Canvas c, string text, Vector2 pos, Alignment align = Alignment.TopLeft, float scale = 1f, font? f = null) => f_DrawText(c,text,pos.X,pos.Y,align,scale,f);
 
-    public static void f_DrawText(this ICanvas c, string text, float px, float py, Alignment align = Alignment.TopLeft, float scale = 1f, font f = null, ColorF? col = null) {
+    public static void f_DrawText(this Canvas c, string text, float px, float py, Alignment align = Alignment.TopLeft, float scale = 1f, font? f = null) {
         if(f == null)
            f = dfont; 
 
@@ -43,7 +44,7 @@ public static class fontie {
         else if(f.fcase == caseness.upper)
             text = text.ToUpper();
 
-        ColorF _c = col ?? ColorF.White; 
+        ColorF _c = fill_color ?? ColorF.White; 
 
         switch(align) {
             case Alignment.TopLeft:

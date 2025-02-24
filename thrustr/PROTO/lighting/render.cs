@@ -1,13 +1,13 @@
 ﻿using SimulationFramework;
-using SimulationFramework.Drawing;
 
 using thrustr.basic;
 using thrustr.utils;
-using thrustr.PROTO;
+using thrustr.PROTO.lighting;
+
 using SimulationFramework.Input;
 
 partial class _main {
-    static void rend(ICanvas c) {
+    static void rend(Canvas c) {
         c.Clear(Color.Black);
 
         lightingshader shad = new();

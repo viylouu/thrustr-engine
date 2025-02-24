@@ -7,7 +7,7 @@ using thrustr.utils;
 
 namespace thrustr.basic;
 
-public class intro {
+public static class intro {
     static ITexture enginetex;
     static ITexture sftex;
 
@@ -33,7 +33,7 @@ public class intro {
         introstart = -1;
     }
     
-    public static void dostuff(ICanvas c, font? f) {
+    public static void render(Canvas c, font? f) {
         if((introstart -10f)*1.25f >= 1)
             return;
 
@@ -67,6 +67,8 @@ public class intro {
             }
         );
 
+        c.Fill(Color.White);
+
         // thrustr engine
 
         float ease1 = ease.oelast(introstart*.25f) *-72 +72;
@@ -83,7 +85,7 @@ public class intro {
 
         c.f_DrawText("thrustr", new(6-ease2, c.Height-28+down2));
         c.f_DrawText("engine", new(12-ease3, c.Height-22+down3));
-        c.f_DrawText("v0.1.4.2", new(4-ease4, c.Height-2+down4), Alignment.BottomLeft);
+        c.f_DrawText("v0.1.4.3", new(4-ease4, c.Height-2+down4), Alignment.BottomLeft);
 
         // simulationframework logo
 

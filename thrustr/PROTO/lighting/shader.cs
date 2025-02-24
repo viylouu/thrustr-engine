@@ -5,7 +5,7 @@ using SimulationFramework.Drawing.Shaders;
 
 using static SimulationFramework.Drawing.Shaders.ShaderIntrinsics;
 
-namespace thrustr.PROTO;
+namespace thrustr.PROTO.lighting;
 
 public class lightingshader : CanvasShader {
     public Vector2 mp;
