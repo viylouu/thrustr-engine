@@ -1,5 +1,7 @@
 ﻿using SimulationFramework;
 
+using System.Numerics;
+
 namespace thrustr.utils;
 
 public static class ease {
@@ -12,6 +14,9 @@ public static class ease {
     public const float _d1 = 2.75f;
 
     public static float dyn(float x, float t, float k) => (t-x)/(k/(Time.DeltaTime*60));
+    public static Vector2 dyn(Vector2 x, Vector2 t, float k) => new(dyn(x.X,t.X,k), dyn(x.Y,t.Y,k));
+    public static Vector3 dyn(Vector3 x, Vector3 t, float k) => new(dyn(x.X,t.X,k), dyn(x.Y,t.Y,k), dyn(x.Z,t.Z,k));
+
     public static float dynang(float x, float t, float k) => ((math.abs(t+math.tau-x)<math.abs(t-x)?t+math.tau:t)-x)/(k/(Time.DeltaTime*60))%math.pi;
 
     public static float isine(float x) => 1-math.cos(math.clamp01(x)*math.pi/2f);
