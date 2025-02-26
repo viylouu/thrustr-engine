@@ -41,6 +41,7 @@ public class Canvas : ICanvas {
     public void DrawRect(Vector2 position, Vector2 size, Alignment alignment = Alignment.TopLeft) => DrawRect(new Rectangle(position, size, alignment));
     public void DrawRect(Rectangle rect) => _canv.DrawRect(rect);
     public void DrawRoundedRect(Rectangle rect, Vector2 radii) => _canv.DrawRoundedRect(rect, radii);
+    public void DrawRoundedRect(float x, float y, float width, float height, float radius, Alignment alignment = Alignment.TopLeft) => _canv.DrawRoundedRect(x,y, width,height, radius, alignment);
     public void DrawEllipse(Rectangle bounds) => _canv.DrawEllipse(bounds);
     public void DrawArc(Rectangle bounds, float begin, float end, bool includeCenter) => _canv.DrawArc(bounds, begin, end, includeCenter);
     public void DrawTriangles(ReadOnlySpan<Vector2> triangles) => _canv.DrawTriangles(triangles);
@@ -69,6 +70,12 @@ public class Canvas : ICanvas {
     public void DrawTexture(ITexture texture, float x, float y, float width, float height, Alignment alignment = Alignment.TopLeft) => _canv.DrawTexture(texture, x,y, width,height, alignment);
     public void DrawTexture(ITexture texture, Vector2 position, Alignment alignment = Alignment.TopLeft) => _canv.DrawTexture(texture, position, alignment);
     public void DrawTexture(ITexture texture, float x, float y, Alignment alignment = Alignment.TopLeft) => _canv.DrawTexture(texture, x,y, alignment);
+    public void Transform(Matrix3x2 transformation) => _canv.Transform(transformation);
+    public void Translate(Vector2 translation) => _canv.Translate(translation);
+    public void Translate(float x, float y) => _canv.Translate(x,y);
+    public void Scale(Vector2 scale) => _canv.Scale(scale);
+    public void Scale(float scaleX, float scaleY) => _canv.Scale(scaleX,scaleY);
+    public void Rotate(float angle) => _canv.Rotate(angle);
     public ITexture Target => _canv.Target;
     public ref readonly CanvasState State => ref _canv.State;
     public float Width => _canv.Width;
