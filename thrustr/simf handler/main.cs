@@ -11,7 +11,7 @@ public static class handle {
 
     // thrustr settings
 
-    public static bool do_intro = true;
+    public static bool do_intro = true, intro_smallmode = false;
     public static font? intro_font = null;
     public static bool debug;
 
