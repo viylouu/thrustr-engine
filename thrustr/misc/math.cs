@@ -92,6 +92,20 @@ public static class math {
     /// <summary>clamps a number between 0 and 1</summary>
     public static Vector3 clamp01(Vector3 a) => clamp(a,0,1);
 
+    ///<summary>returns the biggest number between 2 numbers</summary>
+    public static float max(float a, float b) => MathF.Max(a,b);
+    ///<summary>returns the biggest number between 2 numbers</summary>
+    public static Vector2 max(Vector2 a, Vector2 b) => new(MathF.Max(a.X,b.X), MathF.Max(a.Y,b.Y));
+    ///<summary>returns the biggest number between 2 numbers</summary>
+    public static Vector3 max(Vector3 a, Vector3 b) => new(MathF.Max(a.X,b.X), MathF.Max(a.Y,b.Y), MathF.Max(a.Z,b.Z));
+
+    ///<summary>returns the smallest number between 2 numbers</summary>
+    public static float min(float a, float b) => MathF.Min(a, b);
+    ///<summary>returns the smallest number between 2 numbers</summary>
+    public static Vector2 min(Vector2 a, Vector2 b) => new(MathF.Min(a.X,b.X), MathF.Min(a.Y,b.Y));
+    ///<summary>returns the smallest number between 2 numbers</summary>
+    public static Vector3 min(Vector3 a, Vector3 b) => new(MathF.Min(a.X,b.X), MathF.Min(a.Y,b.Y), MathF.Min(a.Z,b.Z));
+
     /// <summary>calculates a^b</summary>
     public static float pow(float a, float b) => MathF.Pow(a,b);
     /// <summary>calculates the square root of a number</summary>
@@ -120,10 +134,6 @@ public static class math {
     public static float sqrdist(float u, float v, float x, float y) => sqr(x - u) + sqr(y - v);
     /// <summary>calculates the squared distance between two points</summary>
     public static float sqrdist(Vector3 a, Vector3 b) => sqr(b.X - a.X) + sqr(b.Y - a.Y) + sqr(b.Z - a.Z);
-    ///<summary>returns the biggest number between 2 numbers</summary>
-    public static float max(float a, float b) => MathF.Max(a, b);
-    ///<summary>returns the smallest number between 2 numbers</summary>
-    public static float min(float a, float b) => MathF.Min(a, b);
     /// <summary>returns the input value in degrees in radians</summary>
     public static float rad(float deg) => deg * d2r;
     /// <summary>returns the input value in radians in degrees</summary>
