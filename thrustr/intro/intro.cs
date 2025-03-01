@@ -49,25 +49,25 @@ public static class intro {
             float start = ease.ocirc(introstart*1.25f) *-100 +100;
             float end = ease.icirc((introstart -10f)*1.25f) *100;
 
-            float width = math.max(fontie.predicttextwidth(simftext[3]),fontie.predicttextwidth(thrustrtext[3]))+2;
+            float width = math.max(fontie.predicttextwidth(simftext[3]),fontie.predicttextwidth(thrustrtext[3]))+5;
 
             c.Fill(Color.Black);
-            c.DrawRect(-start-end,c.Height, width,fontie.dfont.charh-fontie.dfont.chart+2,Alignment.BottomLeft);
+            c.DrawRect(-start-end,c.Height+1, width,fontie.dfont.charh-fontie.dfont.chart+4,Alignment.BottomLeft);
 
             c.Stroke(Color.White);
-            c.DrawRect(-start-end,c.Height, width,fontie.dfont.charh-fontie.dfont.chart+2,Alignment.BottomLeft);
+            c.DrawRect(-start-end,c.Height+1, width,fontie.dfont.charh-fontie.dfont.chart+4,Alignment.BottomLeft);
 
             c.Fill(Color.White);
 
             float ease1 = ease.oelast(introstart*.25f) *-width +width;
             float down1 = ease.iback((introstart -4f)*2f) *32;
 
-            c.f_DrawText(thrustrtext[3], new(2-ease1, c.Height-2+down1), Alignment.BottomLeft);
+            c.f_DrawText(thrustrtext[3], new(2-ease1, c.Height-3+down1), Alignment.BottomLeft);
 
             float ease2 = ease.oelast((introstart -5f)*.25f) *-width +width;
             float down2 = ease.iback((introstart -9f)*2f) *32;
             
-            c.f_DrawText(simftext[3], new(2-ease2, c.Height-2+down2), Alignment.BottomLeft);
+            c.f_DrawText(simftext[3], new(2-ease2, c.Height-3+down2), Alignment.BottomLeft);
         } else {
             // bg
 
