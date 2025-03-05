@@ -1,9 +1,10 @@
-using Silk.NET.OpenAL;
 using SimulationFramework;
 using SimulationFramework.Drawing;
 using SimulationFramework.Drawing.Shaders;
 
 using System.Numerics;
+
+using thrustr.athr;
 
 namespace thrustr.basic;
 
@@ -80,4 +81,152 @@ public class Canvas : ICanvas {
     public ref readonly CanvasState State => ref _canv.State;
     public float Width => _canv.Width;
     public float Height => _canv.Height;
+
+    // now we get to my stuff :D
+
+    public void thr_DrawAnimation(animation anim, float x,float y, float w,float h, Alignment align, ColorF tint) => DrawTexture(anim.tex,anim.get_source_rect(),new Rectangle(x,y,w,h,align),tint);
+    public void thr_DrawAnimation(animation anim, float x,float y, float w,float h, Alignment align = Alignment.TopLeft) => thr_DrawAnimation(anim,x,y,w,h,align);
+    public void thr_DrawAnimation(animation anim, Vector2 pos, Vector2 size, Alignment align = Alignment.TopLeft) => thr_DrawAnimation(anim,pos.X,pos.Y,size.X,size.Y,align);
+    public void thr_DrawAnimation(animation anim, float x,float y, Alignment align = Alignment.TopLeft) => thr_DrawAnimation(anim,x,y,anim.file.base_width,anim.file.base_height,align);
+    public void thr_DrawAnimation(animation anim, Vector2 pos, Alignment align = Alignment.TopLeft) => thr_DrawAnimation(anim,pos.X,pos.Y,anim.file.base_width,anim.file.base_height,align);
+
+    public void thr_DrawText(string text, Vector2 pos, Alignment align = Alignment.TopLeft, float scale = 1f, font? f = null) => thr_DrawText(text,pos.X,pos.Y,align,scale,f);
+    public void thr_DrawText(string text, float px, float py, Alignment align = Alignment.TopLeft, float scale = 1f, font? f = null) {
+        if(f == null)
+           f = fontie.dfont; 
+
+        if(f.fcase == caseness.lower)
+            text = text.ToLower();
+        else if(f.fcase == caseness.upper)
+            text = text.ToUpper();
+
+        ColorF _c = fontie.fill_color ?? ColorF.White; 
+
+        switch(align) {
+            case Alignment.TopLeft:
+                py -= f.chart;
+                break;
+            case Alignment.BottomLeft:
+                py += f.charh-f.charb;
+                break;
+            case Alignment.TopRight:
+                py -= f.chart;
+                px -= fontie.predicttextwidth(text,scale,f);
+                break;
+            case Alignment.BottomRight:
+                py += f.charh-f.charb;
+                px -= fontie.predicttextwidth(text,scale,f);
+                break;
+            case Alignment.CenterLeft:
+                py += (f.charh-f.charb + -f.chart) * .5f;
+                break;
+            case Alignment.CenterRight:
+                py += (f.charh-f.charb + -f.chart) * .5f;
+                px -= fontie.predicttextwidth(text,scale,f);
+                break;
+            case Alignment.Center:
+                py += (f.charh-f.charb + -f.chart) * .5f;
+                px -= fontie.predicttextwidth(text,scale,f)/2f;
+                break;
+            case Alignment.TopCenter:
+                py -= f.chart;
+                px -= fontie.predicttextwidth(text,scale,f)-f.charw/2f;
+                break;
+            case Alignment.BottomCenter:
+                py += f.charh-f.charb;
+                px -= fontie.predicttextwidth(text,scale,f)/2f;
+                break;
+        }
+
+        float x = 0;
+        for (int i = 0; i < text.Length; i++) {
+            if (text[i] == ' ')
+                x += f.data[f.chars.IndexOf(' ')].width*scale;
+            else {
+                int ch = f.chars.IndexOf(text[i]);
+
+                if (ch == -1) {
+                    DrawTexture(
+                        f.tex,
+                        new Rectangle(0,0,f.charw,f.charh),
+                        new Rectangle(px+x,py,f.charw*scale,f.charh*scale,align),
+                        _c
+                    );
+                    x += f.data[f.chars.IndexOf(' ')].width*scale;
+                } else { 
+                    DrawTexture(
+                        f.tex,
+                        new Rectangle(ch*f.charw,0,f.charw,f.charh),
+                        new Rectangle(px+x,py,f.charw*scale,f.charh*scale,align),
+                        _c
+                    );
+                    x += f.data[f.chars.IndexOf(text[i])].width*scale;
+                }
+            }
+        }
+
+        Flush();
+    }
+
+    public void thr_stackr_RenderScene() {
+        stackr.stackr.layers_rendered = 0;
+
+        stackr.stackr.s_objs.Clear();
+
+        if(stackr.stackr.objs.Count != 1) {
+            Matrix3x2 rot = Matrix3x2.CreateRotation(stackr.stackr.camrot);
+
+            foreach (var item in stackr.stackr.objs) {
+                bool inserted = false;
+
+                Vector2 pos2 = new (item.pos.X -stackr.stackr.cam.X,item.pos.Z -stackr.stackr.cam.Z);
+                pos2 = Vector2.Transform(pos2, rot);
+                pos2 += new Vector2(Width/2, Height/2 -item.pos.Y);
+
+                for (int i = 0; i < stackr.stackr.s_objs.Count; i++) {
+                    Vector2 pos1 = new (stackr.stackr.s_objs[i].a.pos.X -stackr.stackr.cam.X,stackr.stackr.s_objs[i].a.pos.Z -stackr.stackr.cam.Z);
+                    pos1 = Vector2.Transform(pos1, rot);
+                    pos1 += new Vector2(Width/2,Height/2 -stackr.stackr.s_objs[i].a.pos.Y);
+
+                    bool res = item.pos.Z - stackr.stackr.s_objs[i].a.pos.Z < float.Epsilon? (pos2.Y < pos1.Y) : (item.pos.Z > stackr.stackr.s_objs[i].a.pos.Z);
+
+                    if (res)  {
+                        stackr.stackr.s_objs.Insert(i, (item, pos2));
+                        inserted = true;
+                        break;
+                    }
+                }
+
+                if (!inserted)
+                    stackr.stackr.s_objs.Add((item, pos2));
+            }
+        } else
+            stackr.stackr.s_objs.Add((stackr.stackr.objs[0], new Vector2(Width/2,Height/2)));
+
+        for(int i = 0; i < stackr.stackr.s_objs.Count; i++)
+            for(int j = 0; j < stackr.stackr.s_objs[i].a.obj.layers; j++) {
+                Translate(stackr.stackr.s_objs[i].b.X,stackr.stackr.s_objs[i].b.Y -j -stackr.stackr.cam.Y);
+                Rotate(stackr.stackr.camrot+stackr.stackr.s_objs[i].a.rot);
+
+                DrawTexture(
+                    stackr.stackr.objs[i].obj.stack,
+                    new Rectangle(
+                        0, (stackr.stackr.s_objs[i].a.obj.layers-(j+1))*stackr.stackr.s_objs[i].a.obj.size.Y,
+                        stackr.stackr.s_objs[i].a.obj.size.X, stackr.stackr.s_objs[i].a.obj.size.Y,
+                        Alignment.TopLeft
+                    ),
+                    new Rectangle(Vector2.Zero,stackr.stackr.s_objs[i].a.obj.size,Alignment.Center),
+                    stackr.stackr.s_objs[i].a.obj.tint
+                );
+
+                ResetState();
+
+                stackr.stackr.layers_rendered++;
+            }
+    }
+
+    public void thr_stackr_RenderSceneAndClear() {
+        thr_stackr_RenderScene();
+        stackr.stackr.objs.Clear();
+    }
 }

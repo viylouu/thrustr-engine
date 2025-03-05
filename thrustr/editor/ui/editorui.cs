@@ -60,7 +60,7 @@ public static class editorui {
             c.DrawRoundedRect(x,2,width,height,4);
 
             c.Fill(Color.White);
-            c.f_DrawText(but.text, x+width/2f,2+height/2f, Alignment.Center); 
+            c.thr_DrawText(but.text, x+width/2f,2+height/2f, Alignment.Center); 
 
             // -----------------------------------------------------------------------
 

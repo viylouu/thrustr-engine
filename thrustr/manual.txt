@@ -59,9 +59,9 @@ the path is the directory of a charater set file
 the only difference between these is that the genfont_wpath function reads the data from a file instead of hardcoding it
 
 
-you can render fonts by calling the ICanvas.f_DrawText() function (ICanvas being a class from SimulationFramework.Drawing that is provided in the render function)
+you can render fonts by calling the Canvas.thr_DrawText() function (ICanvas being a class from SimulationFramework.Drawing that is provided in the render function)
 
-ICanvas.f_DrawText() accepts 5/6 parameters
+Canvas.thr_DrawText() accepts 5/6 parameters
     1. the text
     2. the position (can be a Vector2 or 2 floats)
     3. the alignment (OPTIONAL)
@@ -139,12 +139,12 @@ the rotation is a float that stores it's worldspace rotation in radians
 
 you can render the scene using 1 of 2 functions
 
-ICanvas.s_RenderScene()
-ICanvas.s_RenderSceneAndClear()
+Canvas.thr_stackr_RenderScene()
+Canvas.thr_stackr_RenderSceneAndClear()
 
-ICanvas.s_RenderSceneAndClear() just calls the render function, and clears the scene
+Canvas.thr_stackr_RenderSceneAndClear() just calls the render function, and clears the scene
 
-ICanvas.s_RenderScene() renders the scene
+Canvas.thr_stackr_RenderScene() renders the scene
 this renders using a camera, which you can set
 
 the camera can be set with 2 variables
@@ -155,3 +155,110 @@ the position is a Vector3 in pixels
 the rotation is a float in radians
 
 the camera is automatically centered
+
+
+-------       athr       -------
+
+athr is an animation library i made to make it easy to handle animations
+it's a little complicated, so this part might be a little long
+
+athr can be accessed using the "thrustr.athr" namespace
+
+--  setup  --
+
+first you need 2 files
+    1. the sprite-sheet
+    2. the athr file
+
+the athr file is a custom file format (".athr")
+here is an example athr file:
+
+bw 8
+bh 8
+
+anim
+    frame
+        0 0
+        1 0
+        0 1
+        1 1
+
+let's dissect this!
+
+"bw" and "bh" stand for "base width", and "base height"
+the 8 after each one is the value of those, so if you had a base width of 16 and a base height of 2, it would look something like this:
+
+bw 16
+bh 2
+
+"anim" just marks the start of the definitions of the animations
+
+frame is the name of one the animations
+after that you have some values
+they are the positions of each frame in the sprite-sheet, scaled down by bw and bh
+so "1 1" would be equivalent to vec2(bw*1,bh*1)
+you can have more animations afterwards, but i didnt include those
+it would look something like this though
+
+bw 8
+bh 8
+
+anim
+    frame
+        0 0
+        1 0
+        0 1
+        1 1
+    frame2
+        0 0
+        1 0
+        0 1
+        1 1
+        2 2
+        6346 1
+
+there are no comments, but the file is simple enough to where i don't think you would need those
+
+--  loading  --
+
+you first need to create a variable of type "animation" (this will be referenced as "animvar" in the manual)
+
+you can set it to animation.load_from_path() or animation.load_from_data()
+animation.load_from_path() just calls animation.load_from_data(), but it loads the athr file automatically
+
+animation.load_from_path() accepts 2 parameters:
+    1. the path
+    2. the sprite-sheet
+
+animation.load_from_data() accepts 2 parameters:
+    1. the data in the athr file
+    2. the sprite-sheet
+
+the sprite-sheet is just an ITexture
+
+
+next, you need to set the current animation
+you can set the animation by calling animvar.anim = "name of anim";
+
+next, you set the fps of the animation
+you can set the fps by calling animvar.fps = value_of_fps;
+
+
+--  usage  --
+
+alright, now we can finally render our animations!
+
+so, what you want to do is inside of your render function, you want to call animvar.update(Time.DeltaTime);
+what this will do is update the current frame of the animation
+
+then, to actually draw your animation, you call
+Canvas.thr_DrawAnimation()
+
+this accepts anywhere from 7-2 parameters:
+    1. the animvar
+    2. the position (can be vec2 or individual values)
+    3. the size (can be vec2 or individual values) (OPTIONAL)
+    4. the alignment (OPTIONAL)
+    5. the tint (can be Color or ColorF) (OPTIONAL)
+
+now you can draw the animation!

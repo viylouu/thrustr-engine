@@ -16,8 +16,8 @@ public static class intro {
     static float introstart = 0;
 
     static string[] thrustrtext = {
-        "thrustr", "engine", "v0.1.4.4",
-        "thrustr engine <0.1.4.4>"
+        "thrustr", "engine", "v0.1.5",
+        "thrustr engine <0.1.5>"
     };
 
     static string[] simftext = {
@@ -62,12 +62,12 @@ public static class intro {
             float ease1 = ease.oelast(introstart*.25f) *-width +width;
             float down1 = ease.iback((introstart -4f)*2f) *32;
 
-            c.f_DrawText(thrustrtext[3], new(2-ease1, c.Height-3+down1), Alignment.BottomLeft);
+            c.thr_DrawText(thrustrtext[3], new(2-ease1, c.Height-3+down1), Alignment.BottomLeft);
 
             float ease2 = ease.oelast((introstart -5f)*.25f) *-width +width;
             float down2 = ease.iback((introstart -9f)*2f) *32;
             
-            c.f_DrawText(simftext[3], new(2-ease2, c.Height-3+down2), Alignment.BottomLeft);
+            c.thr_DrawText(simftext[3], new(2-ease2, c.Height-3+down2), Alignment.BottomLeft);
         } else {
             // bg
 
@@ -110,9 +110,9 @@ public static class intro {
 
             c.DrawTexture(smallenginetex, new Vector2(48-ease1,c.Height+down1), Alignment.BottomLeft);
 
-            c.f_DrawText(thrustrtext[0], new(6-ease2, c.Height-28+down2));
-            c.f_DrawText(thrustrtext[1], new(12-ease3, c.Height-22+down3));
-            c.f_DrawText(thrustrtext[2], new(4-ease4, c.Height-2+down4), Alignment.BottomLeft);
+            c.thr_DrawText(thrustrtext[0], new(6-ease2, c.Height-28+down2));
+            c.thr_DrawText(thrustrtext[1], new(12-ease3, c.Height-22+down3));
+            c.thr_DrawText(thrustrtext[2], new(4-ease4, c.Height-2+down4), Alignment.BottomLeft);
 
             // simulationframework logo
 
@@ -128,9 +128,9 @@ public static class intro {
 
             c.DrawTexture(smallsftex, new Vector2(48-ease5,c.Height+down5), Alignment.BottomLeft);
 
-            c.f_DrawText(simftext[0], new(6-ease6, c.Height-28+down6));
-            c.f_DrawText(simftext[1], new(8-ease7, c.Height-22+down7));
-            c.f_DrawText(simftext[2], new(4-ease8, c.Height-2+down8), Alignment.BottomLeft);
+            c.thr_DrawText(simftext[0], new(6-ease6, c.Height-28+down6));
+            c.thr_DrawText(simftext[1], new(8-ease7, c.Height-22+down7));
+            c.thr_DrawText(simftext[2], new(4-ease8, c.Height-2+down8), Alignment.BottomLeft);
         }
     }
 }

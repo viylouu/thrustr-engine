@@ -8,6 +8,6 @@ partial class main {
         c.Clear(Color.Black);
 
         c.Fill(Color.White);
-        c.f_DrawText($"{math.round(1/Time.DeltaTime)} fps", 3,3);
+        c.thr_DrawText($"{math.round(1/Time.DeltaTime)} fps", 3,3);
     }
 }

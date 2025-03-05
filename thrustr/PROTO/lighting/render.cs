@@ -16,6 +16,6 @@ partial class _main {
         c.Fill(shad);
         c.DrawRect(0,0,640,360);
 
-        c.f_DrawText($"{math.round(1/Time.DeltaTime)} fps", 3,3);
+        c.thr_DrawText($"{math.round(1/Time.DeltaTime)} fps", 3,3);
     }
 }
