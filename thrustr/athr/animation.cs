@@ -22,6 +22,7 @@ public class animation {
         a.file = new(data);
         a.file.parse();
         
+        a.events = new();
         a.tex = texture;
 
         a._frames = new();
