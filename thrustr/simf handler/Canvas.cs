@@ -86,10 +86,16 @@ public class Canvas : ICanvas {
 
     public void thr_DrawAnimation(animation anim, float x,float y, float w,float h, Alignment align, ColorF tint) => DrawTexture(anim.tex,anim.get_source_rect(),new Rectangle(x,y,w,h,align),tint);
     public void thr_DrawAnimation(animation anim, float x,float y, float w,float h, Alignment align, Color tint) => thr_DrawAnimation(anim,x,y,w,h,align,tint.ToColorF());
+    public void thr_DrawAnimation(animation anim, Vector2 pos, Vector2 size, Alignment align, ColorF tint) => thr_DrawAnimation(anim,pos.X,pos.Y,size.X,size.Y,align,tint);
+    public void thr_DrawAnimation(animation anim, Vector2 pos, Vector2 size, Alignment align, Color tint) => thr_DrawAnimation(anim,pos.X,pos.Y,size.X,size.Y,align,tint.ToColorF());
     public void thr_DrawAnimation(animation anim, float x,float y, float w,float h, Alignment align = Alignment.TopLeft) => thr_DrawAnimation(anim,x,y,w,h,align,ColorF.White);
     public void thr_DrawAnimation(animation anim, Vector2 pos, Vector2 size, Alignment align = Alignment.TopLeft) => thr_DrawAnimation(anim,pos.X,pos.Y,size.X,size.Y,align,ColorF.White);
     public void thr_DrawAnimation(animation anim, float x,float y, Alignment align = Alignment.TopLeft) => thr_DrawAnimation(anim,x,y,anim.file.base_width,anim.file.base_height,align,ColorF.White);
     public void thr_DrawAnimation(animation anim, Vector2 pos, Alignment align = Alignment.TopLeft) => thr_DrawAnimation(anim,pos.X,pos.Y,anim.file.base_width,anim.file.base_height,align,ColorF.White);
+    public void thr_DrawAnimation(animation anim, float x,float y, Alignment align, ColorF tint) => thr_DrawAnimation(anim,x,y,anim.file.base_width,anim.file.base_height,align,tint);
+    public void thr_DrawAnimation(animation anim, Vector2 pos, Alignment align, ColorF tint) => thr_DrawAnimation(anim,pos.X,pos.Y,anim.file.base_width,anim.file.base_height,align,tint);
+    public void thr_DrawAnimation(animation anim, float x,float y, Alignment align, Color tint) => thr_DrawAnimation(anim,x,y,anim.file.base_width,anim.file.base_height,align,tint.ToColorF());
+    public void thr_DrawAnimation(animation anim, Vector2 pos, Alignment align, Color tint) => thr_DrawAnimation(anim,pos.X,pos.Y,anim.file.base_width,anim.file.base_height,align,tint.ToColorF());
 
     public void thr_DrawText(string text, Vector2 pos, Alignment align = Alignment.TopLeft, float scale = 1f, font? f = null) => thr_DrawText(text,pos.X,pos.Y,align,scale,f);
     public void thr_DrawText(string text, float px, float py, Alignment align = Alignment.TopLeft, float scale = 1f, font? f = null) {
