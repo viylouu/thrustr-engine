@@ -16,8 +16,8 @@ public static class intro {
     static float introstart = 0;
 
     static string[] thrustrtext = {
-        "thrustr", "engine", "v0.1.5",
-        "thrustr engine <0.1.5>"
+        "thrustr", "engine", "v0.1.5.1",
+        "thrustr engine <0.1.5.1>"
     };
 
     static string[] simftext = {

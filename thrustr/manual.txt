@@ -181,7 +181,7 @@ anim
         0 0
         1 0
         0 1
-        1 1
+        1 1 endevt
 
 let's dissect this!
 
@@ -194,9 +194,14 @@ bh 2
 "anim" just marks the start of the definitions of the animations
 
 frame is the name of one the animations
+you can ONLY have letters of the alphabet in the name (anything that qualifies in the char.IsLetter() function)
 after that you have some values
 they are the positions of each frame in the sprite-sheet, scaled down by bw and bh
 so "1 1" would be equivalent to vec2(bw*1,bh*1)
+
+"endevt" is an event, you can add these anywhere, and you do not need them, but these have the same naming rules as the animation name
+you can have functions that are called on the first frame it goes to the event
+
 you can have more animations afterwards, but i didnt include those
 it would look something like this though
 
@@ -208,7 +213,7 @@ anim
         0 0
         1 0
         0 1
-        1 1
+        1 1 endevt
     frame2
         0 0
         1 0
@@ -262,3 +267,8 @@ this accepts anywhere from 7-2 parameters:
     5. the tint (can be Color or ColorF) (OPTIONAL)
 
 now you can draw the animation!
+
+if you want to use the events, then heres how
+you can add the name of the event into the dictionary called "events" in the animvar
+it accepts the name of the event, and the action
+the action will be called when the current frame switches to the frame with the event

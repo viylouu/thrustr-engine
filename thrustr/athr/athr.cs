@@ -1,4 +1,5 @@
 using System.Numerics;
+using thrustr.basic;
 
 namespace thrustr.athr;
 
@@ -52,8 +53,22 @@ public class athr {
                 _toks.Add(new() { dat = text, type = athr_type.num });
             }
 
+            while((cur == '\r' && peek(1) == '\n') || cur == '\n') { 
+                _toks.Add(new() { dat = "\n", type = athr_type.nl });
+                if(cur == '\r' && peek(1) == '\n') idx+=2;
+                else idx++;
+            }
             while(char.IsWhiteSpace(cur)) idx++;
         }
+
+        if(handle.debug)
+            for(int i = 0; i < _toks.Count; i++)
+                if(_toks[i].type == athr_type.nl)
+                    Console.WriteLine($"({_toks[i].type})");
+                else
+                    Console.WriteLine($"({_toks[i].type}, {_toks[i].dat})");
+
+        if(handle.debug) Console.WriteLine();
 
         // go thru the toks
 
@@ -65,32 +80,44 @@ public class athr {
 
         for(;;) {
             if(idx >= _toks.Count)
-                return;
+                break;
 
             if(!doing_anims)
                 switch(_toks[idx].dat) {
                     case "bw": 
-                        base_width = Convert.ToSingle(_toks[++idx].dat); break;
+                        base_width = Convert.ToSingle(_toks[++idx].dat); if(handle.debug) Console.WriteLine($"bw: {base_width}"); break;
                     case "bh":
-                        base_height = Convert.ToSingle(_toks[++idx].dat); break;
+                        base_height = Convert.ToSingle(_toks[++idx].dat); if(handle.debug) Console.WriteLine($"bh: {base_height}"); break;
                     case "anim":
-                        doing_anims = true; break;
+                        doing_anims = true; idx++; if(handle.debug) Console.WriteLine("anim"); break;
+                    case "\n":
+                        break;
                 }
             else {
-                string anim_name = _toks[idx].dat;
-                idx++;
+                string anim_name = _toks[idx].dat; Console.WriteLine(anim_name); idx+=2;
                 List<Vector2> posses = new();
+                Dictionary<int,string> events = new();
                 while(_toks[idx].type == athr_type.num) {
-                    posses.Add(new(Convert.ToSingle(_toks[idx++].dat),Convert.ToSingle(_toks[idx++].dat)));
+                    posses.Add(new(Convert.ToSingle(_toks[idx++].dat),Convert.ToSingle(_toks[idx++].dat))); 
+                    if(handle.debug) Console.Write($"{posses.Count-1} ({posses[posses.Count-1].X}, {posses[posses.Count-1].Y})");
+
+                    if(idx >= _toks.Count) { if(handle.debug) Console.WriteLine(); break; }
+
+                    if(_toks[idx].type == athr_type.nl) idx++;
+                    else if(_toks[idx].type == athr_type.text) { events.Add(posses.Count-1,_toks[idx++].dat); if(handle.debug) Console.Write(" "+_toks[idx-1].dat); }
+
+                    if(handle.debug) Console.WriteLine();
 
                     if(idx >= _toks.Count)
                         break;
                 }
 
-                anims.Add(new() { name = anim_name, posses = posses.ToArray() });
+                anims.Add(new() { name = anim_name, posses = posses.ToArray(), events = events });
             }
 
             idx++;
         }
+
+        if(handle.debug) Console.WriteLine("done!\n");
     }
 }

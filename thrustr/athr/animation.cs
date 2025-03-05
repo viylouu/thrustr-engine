@@ -1,10 +1,14 @@
 using SimulationFramework;
 using SimulationFramework.Drawing;
 
+using thrustr.basic;
+
 namespace thrustr.athr;
 
 public class animation {
     public static animation load_from_path(string path, ITexture texture) {
+        if(handle.debug) Console.WriteLine($"parsing \"{path}\"");
+
         string data = "";
         using(StreamReader sr = new(path))
             data = sr.ReadToEnd();
@@ -32,6 +36,7 @@ public class animation {
     public string anim;
     public int frame;
     public ITexture tex;
+    public Dictionary<string, Action> events;
 
     public float spf;
     float _fps;
@@ -55,6 +60,8 @@ public class animation {
             _frameprogress = spf;
             frame++;
             frame = frame % _frames[anim].posses.Length;
+
+            if(_frames[anim].events.TryGetValue(frame,out string? evt)) if(events.TryGetValue(evt,out Action? act)) act();
         }
     }
 
