@@ -94,7 +94,7 @@ public class athr {
                         break;
                 }
             else {
-                string anim_name = _toks[idx].dat; Console.WriteLine(anim_name); idx+=2;
+                string anim_name = _toks[idx].dat; if(handle.debug) Console.WriteLine(anim_name); idx+=2;
                 List<Vector2> posses = new();
                 Dictionary<int,string> events = new();
                 while(_toks[idx].type == athr_type.num) {
